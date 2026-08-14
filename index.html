@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>room.glb Viewer</title>
+    <style>
+        html, body { height: 100%; margin: 0; overflow: hidden; }
+        #canvas { width: 100%; height: 100%; display: block; }
+        
+        #crosshair {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 10;
+            display: none;
+            transition: transform 0.1s ease, background-color 0.1s ease;
+        }
+
+        #crosshair.active {
+            background-color: #00ffcc;
+            transform: translate(-50%, -50%) scale(1.4);
+        }
+    </style>
+</head>
+<body>
+    <div id="crosshair"></div>
+    <canvas id="canvas"></canvas>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.153.0/build/three.module.js"
+        }
+    }
+    </script>
+    <script type="module">
+        import * as THREE from 'three';
+        import { GLTFLoader } from 'https://unpkg.com/three@0.153.0/examples/jsm/loaders/GLTFLoader.js';
+        import { OrbitControls } from 'https://unpkg.com/three@0.153.0/examples/jsm/controls/OrbitControls.js';
+
+        const canvas = document.getElementById('canvas');
+        const crosshair = document.getElementById('crosshair');
+
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x202020);
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enabled = false;
+
+        const raycaster = new THREE.Raycaster();
+        const centerVector = new THREE.Vector2(0, 0);
+
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+
+        function logCamera() {
+            console.log(`Camera Pos: x=${camera.position.x.toFixed(3)}, y=${camera.position.y.toFixed(3)}, z=${camera.position.z.toFixed(3)} | Distance: ${spherical.radius.toFixed(3)}`);
+        }
+
+        function checkHover() {
+            if (document.pointerLockElement !== canvas) return;
+            
+            raycaster.setFromCamera(centerVector, camera);
+            const hits = raycaster.intersectObjects(scene.children, true);
+
+            if (hits.length > 0) {
+                crosshair.classList.add('active');
+            } else {
+                crosshair.classList.remove('active');
+            }
+        }
+
+        renderer.domElement.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            logCamera();
+        });
+
+        renderer.domElement.addEventListener('click', () => {
+            if (document.pointerLockElement !== canvas) {
+                canvas.requestPointerLock();
+                return;
+            }
+
+            raycaster.setFromCamera(centerVector, camera);
+            const hits = raycaster.intersectObjects(scene.children, true);
+
+            if (hits.length > 0) {
+                const obj = hits[0].object;
+                let name = obj.name;
+                if (!name) {
+                    let p = obj.parent;
+                    while (p && !name) { name = p.name; p = p.parent; }
+                }
+                const pt = hits[0].point;
+                console.log(`Clicked Object: ${name || '(unnamed)'} | Point: x=${pt.x.toFixed(3)}, y=${pt.y.toFixed(3)}, z=${pt.z.toFixed(3)}`, obj);
+            } else {
+                console.log('Clicked empty space');
+            }
+        });
+
+        const hemi = new THREE.HemisphereLight(0xffffff, 0x444444, 1.2);
+        hemi.position.set(0, 20, 0);
+        scene.add(hemi);
+        const dir = new THREE.DirectionalLight(0xffffff, 0.8);
+        dir.position.set(5, 10, 7.5);
+        scene.add(dir);
+
+        const loader = new GLTFLoader();
+
+        let lookTarget = new THREE.Vector3(0.063, 1.610, -1.099);
+        const spherical = new THREE.Spherical();
+        let minTheta = -Infinity, maxTheta = Infinity;
+        let minPhi = 0.01, maxPhi = Math.PI - 0.01;
+        let minRadius = 0.5, maxRadius = 10.0;
+        const lookSensitivity = 0.001;
+        const zoomSensitivity = 0.001;
+
+        function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+        function updateCameraFromSpherical() {
+            const pos = new THREE.Vector3().setFromSpherical(spherical).add(lookTarget);
+            camera.position.copy(pos);
+            camera.lookAt(lookTarget);
+            logCamera();
+            checkHover();
+        }
+
+        function onPointerMove(e) {
+            if (document.pointerLockElement !== canvas) return;
+            const movementX = e.movementX || e.mozMovementX || e.webkitMovementX || 0;
+            const movementY = e.movementY || e.mozMovementY || e.webkitMovementY || 0;
+            spherical.theta -= movementX * lookSensitivity;
+            spherical.phi -= movementY * lookSensitivity;
+            spherical.theta = clamp(spherical.theta, minTheta, maxTheta);
+            spherical.phi = clamp(spherical.phi, minPhi, maxPhi);
+            updateCameraFromSpherical();
+        }
+
+        function onWheel(e) {
+            if (document.pointerLockElement !== canvas) return;
+            spherical.radius += e.deltaY * zoomSensitivity;
+            spherical.radius = clamp(spherical.radius, minRadius, maxRadius);
+            updateCameraFromSpherical();
+        }
+
+        window.addEventListener('wheel', onWheel, { passive: true });
+
+        document.addEventListener('pointerlockchange', () => {
+            if (document.pointerLockElement === canvas) {
+                document.addEventListener('mousemove', onPointerMove);
+                crosshair.style.display = 'block';
+                console.log('Pointer locked — mouselook enabled');
+            } else {
+                document.removeEventListener('mousemove', onPointerMove);
+                crosshair.style.display = 'none';
+                console.log('Pointer unlocked — mouselook disabled');
+            }
+        });
+
+        function loadGLB(url) {
+            const old = scene.getObjectByName('room-model');
+            if (old) scene.remove(old);
+
+            fetch(url, { method: 'GET' }).then(resp => {
+                if (!resp.ok) {
+                    console.error('Fetch error:', resp.status, resp.statusText);
+                    return;
+                }
+                loader.load(url,
+                    function (gltf) {
+                        const root = gltf.scene || gltf.scenes[0];
+                        root.name = 'room-model';
+                        scene.add(root);
+
+                        lookTarget.set(0.063, 1.610, -1.099);
+                        const posInit = new THREE.Vector3(2.859, 1.427, -1.192);
+
+                        const posLeft = new THREE.Vector3(0.200, 1.427, -1.192);
+                        const posRight = new THREE.Vector3(3.800, 1.427, -1.192);
+                        const posTop = new THREE.Vector3(2.859, 1.261, -1.192);
+                        const posBottom = new THREE.Vector3(2.859, 2.766, -1.192);
+
+                        const offInit = posInit.clone().sub(lookTarget);
+                        spherical.setFromVector3(offInit);
+                        
+                        if (!isMobile) {
+                            spherical.radius *= 0.6;
+                        }
+
+                        minRadius = spherical.radius * 0.3;
+                        maxRadius = spherical.radius * 2.5;
+
+                        const offLeft = posLeft.clone().sub(lookTarget);
+                        const offRight = posRight.clone().sub(lookTarget);
+                        const offTop = posTop.clone().sub(lookTarget);
+                        const offBottom = posBottom.clone().sub(lookTarget);
+
+                        const sphLeft = new THREE.Spherical().setFromVector3(offLeft);
+                        const sphRight = new THREE.Spherical().setFromVector3(offRight);
+                        const sphTop = new THREE.Spherical().setFromVector3(offTop);
+                        const sphBottom = new THREE.Spherical().setFromVector3(offBottom);
+
+                        minTheta = Math.min(sphLeft.theta, sphRight.theta);
+                        maxTheta = Math.max(sphLeft.theta, sphRight.theta);
+                        minPhi = Math.min(sphTop.phi, sphBottom.phi);
+                        maxPhi = Math.max(sphTop.phi, sphBottom.phi);
+
+                        updateCameraFromSpherical();
+                        console.log('GLB successfully loaded');
+                    },
+                    undefined,
+                    function (err) {
+                        console.error('GLB Loader Error:', err);
+                    }
+                );
+            }).catch(err => {
+                console.error('Network Error:', err);
+            });
+        }
+
+        loadGLB('room.glb');
+
+        window.addEventListener('dragover', e => e.preventDefault());
+        window.addEventListener('drop', async e => {
+            e.preventDefault();
+            const f = e.dataTransfer.files[0];
+            if (!f) return;
+            const url = URL.createObjectURL(f);
+            await loadGLB(url);
+            URL.revokeObjectURL(url);
+        });
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        window.addEventListener('resize', onWindowResize);
+
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
+</body>
+</html>
