@@ -330,12 +330,20 @@ function openAppWindow(app) {
     winEl.id         = `window-${app.id}`;
     winEl.style.zIndex = zIndexCounter;
 
-    const offsetX = 40 + (Object.keys(openWindows).length * 20) % 200;
-    const offsetY = 40 + (Object.keys(openWindows).length * 20) % 150;
-    winEl.style.left   = offsetX + 'px';
-    winEl.style.top    = offsetY + 'px';
-    winEl.style.width  = '420px';
-    winEl.style.height = '280px';
+    const isMobileLayout = window.matchMedia('(max-width: 768px), (pointer: coarse)').matches;
+
+    if (isMobileLayout) {
+        winEl.style.left = '5vw';
+        winEl.style.top  = '5vh';
+        // width and height are handled by mobile CSS
+    } else {
+        const offsetX = 40 + (Object.keys(openWindows).length * 20) % 200;
+        const offsetY = 40 + (Object.keys(openWindows).length * 20) % 150;
+        winEl.style.left   = offsetX + 'px';
+        winEl.style.top    = offsetY + 'px';
+        winEl.style.width  = '420px';
+        winEl.style.height = '280px';
+    }
 
     winEl.innerHTML = `
         <div class="win98-window-titlebar" id="titlebar-${app.id}">
