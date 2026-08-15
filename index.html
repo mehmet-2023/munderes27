@@ -11,6 +11,7 @@
         html, body { height: 100%; margin: 0; overflow: hidden; font-family: "MS Sans Serif", Tahoma, sans-serif; touch-action: none; }
         #canvas { width: 100%; height: 100%; display: block; touch-action: none; }
         
+        /* Desktop crosshair (pointer-lock mode) */
         #crosshair {
             position: absolute;
             top: 50%;
@@ -30,6 +31,75 @@
         #crosshair.active {
             background-color: #ff3333;
             transform: translate(-50%, -50%) scale(1.4);
+        }
+
+        /* Mobile crosshair (always centered) */
+        #mobile-crosshair {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 44px;
+            height: 44px;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 15;
+            display: none;
+        }
+
+        #mobile-crosshair::before,
+        #mobile-crosshair::after {
+            content: '';
+            position: absolute;
+            background: rgba(255,255,255,0.85);
+            border-radius: 2px;
+        }
+
+        /* horizontal bar */
+        #mobile-crosshair::before {
+            top: 50%; left: 8px;
+            width: calc(100% - 16px);
+            height: 2px;
+            margin-top: -1px;
+        }
+
+        /* vertical bar */
+        #mobile-crosshair::after {
+            left: 50%; top: 8px;
+            height: calc(100% - 16px);
+            width: 2px;
+            margin-left: -1px;
+        }
+
+        #mobile-crosshair .mc-ring {
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 18px; height: 18px;
+            border: 2px solid rgba(255,255,255,0.9);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 6px rgba(0,0,0,0.6);
+            transition: border-color 0.15s, transform 0.15s;
+        }
+
+        #mobile-crosshair.active .mc-ring {
+            border-color: #ff4444;
+            transform: translate(-50%, -50%) scale(1.3);
+        }
+
+        /* Tap hint label */
+        #mobile-tap-hint {
+            position: fixed;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.75);
+            font-size: 13px;
+            font-family: "MS Sans Serif", Tahoma, sans-serif;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+            pointer-events: none;
+            z-index: 15;
+            display: none;
+            text-align: center;
         }
 
         #loader-overlay {
@@ -582,6 +652,8 @@
 
     <div id="pc-subtitle">Click on the computer to enter the website</div>
     <div id="crosshair"></div>
+    <div id="mobile-crosshair"><div class="mc-ring"></div></div>
+    <div id="mobile-tap-hint">Aim at the computer and tap</div>
     <canvas id="canvas"></canvas>
 
     <div id="win98-os-overlay">
@@ -629,6 +701,8 @@
 
         const canvas = document.getElementById('canvas');
         const crosshair = document.getElementById('crosshair');
+        const mobileCrosshair = document.getElementById('mobile-crosshair');
+        const mobileTapHint = document.getElementById('mobile-tap-hint');
         const loaderOverlay = document.getElementById('loader-overlay');
         const loaderBar = document.getElementById('loader-bar');
         const loaderText = document.getElementById('loader-text');
@@ -747,7 +821,12 @@
             setTimeout(() => {
                 typingOverlay.style.display = 'none';
                 if (!isPcClicked) {
-                    pcSubtitle.style.display = 'block';
+                    if (isMobile) {
+                        mobileCrosshair.style.display = 'block';
+                        mobileTapHint.style.display = 'block';
+                    } else {
+                        pcSubtitle.style.display = 'block';
+                    }
                 }
                 if (!isMobile && document.pointerLockElement !== canvas) {
                     canvas.requestPointerLock();
@@ -758,15 +837,31 @@
         typingOverlay.addEventListener('click', closeTypingOverlay);
 
         function checkHover() {
-            if (!isMobile && document.pointerLockElement !== canvas) return;
-            
+            const desktopActive = !isMobile && document.pointerLockElement === canvas;
+            const mobileActive  = isMobile && !isPcClicked;
+            if (!desktopActive && !mobileActive) return;
+
             raycaster.setFromCamera(centerVector, camera);
             const hits = raycaster.intersectObjects(scene.children, true);
 
+            // Check if any hit is on the PC target mesh
+            let onTarget = false;
             if (hits.length > 0) {
-                crosshair.classList.add('active');
-            } else {
-                crosshair.classList.remove('active');
+                let curr = hits[0].object;
+                if (curr.name === 'one_lp_lambert1_0') onTarget = true;
+                while (curr.parent && !onTarget) {
+                    curr = curr.parent;
+                    if (curr.name === 'one_lp_lambert1_0') onTarget = true;
+                }
+            }
+
+            if (desktopActive) {
+                if (onTarget) crosshair.classList.add('active');
+                else crosshair.classList.remove('active');
+            }
+            if (mobileActive) {
+                if (onTarget) mobileCrosshair.classList.add('active');
+                else mobileCrosshair.classList.remove('active');
             }
         }
 
@@ -808,33 +903,35 @@
             e.preventDefault();
         });
 
-        renderer.domElement.addEventListener('click', () => {
-            if (isMobile) return;
-            if (document.pointerLockElement !== canvas && !isPcClicked) {
-                canvas.requestPointerLock();
-                return;
-            }
-
+        function tryClickPC() {
             raycaster.setFromCamera(centerVector, camera);
             const hits = raycaster.intersectObjects(scene.children, true);
 
             if (hits.length > 0) {
-                const obj = hits[0].object;
-                let isTarget = false;
-
-                let curr = obj;
-                if (curr.name === "one_lp_lambert1_0") isTarget = true;
+                let curr = hits[0].object;
+                let isTarget = curr.name === 'one_lp_lambert1_0';
                 while (curr.parent && !isTarget) {
                     curr = curr.parent;
-                    if (curr.name === "one_lp_lambert1_0") isTarget = true;
+                    isTarget = curr.name === 'one_lp_lambert1_0';
                 }
-
                 if (isTarget && !isPcClicked) {
                     isPcClicked = true;
                     pcSubtitle.style.display = 'none';
+                    mobileTapHint.style.display = 'none';
                     startCameraAnimation();
+                    return true;
                 }
             }
+            return false;
+        }
+
+        renderer.domElement.addEventListener('click', () => {
+            if (isMobile) return; // mobile uses touchend tap detection
+            if (document.pointerLockElement !== canvas && !isPcClicked) {
+                canvas.requestPointerLock();
+                return;
+            }
+            tryClickPC();
         });
 
         const hemi = new THREE.HemisphereLight(0xfff3e0, 0x3d3228, 0.6);
@@ -891,12 +988,15 @@
 
         let touchStartX = 0;
         let touchStartY = 0;
+        let touchTotalDelta = 0;
         let isTouching = false;
+        const TAP_MAX_MOVE = 12; // px — more than this = pan, not tap
 
         function onTouchStart(e) {
             if (e.touches.length === 1) {
                 touchStartX = e.touches[0].clientX;
                 touchStartY = e.touches[0].clientY;
+                touchTotalDelta = 0;
                 isTouching = true;
             }
         }
@@ -906,24 +1006,28 @@
             e.preventDefault();
             const currentX = e.touches[0].clientX;
             const currentY = e.touches[0].clientY;
-            
             const deltaX = currentX - touchStartX;
             const deltaY = currentY - touchStartY;
-            
+            touchTotalDelta += Math.hypot(deltaX, deltaY);
             handleLookDelta(deltaX, deltaY);
-            
             touchStartX = currentX;
             touchStartY = currentY;
         }
 
-        function onTouchEnd() {
+        function onTouchEnd(e) {
+            if (!isTouching) return;
             isTouching = false;
+
+            // Tap detection: finger barely moved → treat as click
+            if (touchTotalDelta < TAP_MAX_MOVE && !isPcClicked) {
+                tryClickPC();
+            }
         }
 
         canvas.addEventListener('touchstart', onTouchStart, { passive: false });
         canvas.addEventListener('touchmove', onTouchMove, { passive: false });
         canvas.addEventListener('touchend', onTouchEnd);
-        canvas.addEventListener('touchcancel', onTouchEnd);
+        canvas.addEventListener('touchcancel', () => { isTouching = false; });
 
         function onWheel(e) {
             if (!isMobile && document.pointerLockElement !== canvas) return;
