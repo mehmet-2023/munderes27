@@ -2,11 +2,11 @@
 <html lang="tr">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
     <title>MUNDERES'27</title>
     <style>
-        html, body { height: 100%; margin: 0; overflow: hidden; font-family: "MS Sans Serif", Tahoma, sans-serif; }
-        #canvas { width: 100%; height: 100%; display: block; }
+        html, body { height: 100%; margin: 0; overflow: hidden; font-family: "MS Sans Serif", Tahoma, sans-serif; touch-action: none; }
+        #canvas { width: 100%; height: 100%; display: block; touch-action: none; }
         
         #crosshair {
             position: absolute;
@@ -91,7 +91,7 @@
             height: 100%;
             width: 0%;
             background-color: #000080;
-            transition: width 0.1s ease;
+            transition: width 0.1s linear;
         }
     </style>
 </head>
@@ -146,12 +146,63 @@
 
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
 
+        let simulatedPercent = 0;
+        let progressInterval = null;
+        let isModelLoaded = false;
+
+        function startSimulatedProgress() {
+            simulatedPercent = 0;
+            loaderBar.style.width = '0%';
+            loaderText.textContent = 'Loading website (0%)...';
+            clearInterval(progressInterval);
+
+            progressInterval = setInterval(() => {
+                if (!isModelLoaded) {
+                    if (simulatedPercent < 70) {
+                        simulatedPercent += Math.floor(Math.random() * 4) + 2;
+                    } else if (simulatedPercent < 90) {
+                        simulatedPercent += Math.floor(Math.random() * 2) + 1;
+                    } else if (simulatedPercent < 98) {
+                        simulatedPercent += 1;
+                    }
+                } else {
+                    simulatedPercent = 100;
+                }
+
+                if (simulatedPercent > 100) simulatedPercent = 100;
+                loaderBar.style.width = simulatedPercent + '%';
+                loaderText.textContent = `Loading website (${simulatedPercent}%)...`;
+
+                if (simulatedPercent >= 100) {
+                    clearInterval(progressInterval);
+                    if (isModelLoaded) {
+                        loaderText.textContent = 'Initializing scene...';
+                        setTimeout(() => {
+                            loaderOverlay.style.opacity = '0';
+                            setTimeout(() => {
+                                loaderOverlay.style.display = 'none';
+                            }, 250);
+                        }, 200);
+                    }
+                }
+            }, 80);
+        }
+
+        function completeSimulatedProgress() {
+            isModelLoaded = true;
+            if (simulatedPercent < 99) {
+                simulatedPercent = 100;
+                loaderBar.style.width = '100%';
+                loaderText.textContent = 'Loading website (100%)...';
+            }
+        }
+
         function logCamera() {
             console.log(`Camera Pos: x=${camera.position.x.toFixed(3)}, y=${camera.position.y.toFixed(3)}, z=${camera.position.z.toFixed(3)} | Distance: ${spherical.radius.toFixed(3)}`);
         }
 
         function checkHover() {
-            if (document.pointerLockElement !== canvas) return;
+            if (!isMobile && document.pointerLockElement !== canvas) return;
             
             raycaster.setFromCamera(centerVector, camera);
             const hits = raycaster.intersectObjects(scene.children, true);
@@ -169,6 +220,7 @@
         });
 
         renderer.domElement.addEventListener('click', () => {
+            if (isMobile) return;
             if (document.pointerLockElement !== canvas) {
                 canvas.requestPointerLock();
                 return;
@@ -214,7 +266,7 @@
 
         let minPhi = 0.01, maxPhi = Math.PI - 0.01;
         let minRadius = 0.5, maxRadius = 10.0;
-        const lookSensitivity = 0.001;
+        const lookSensitivity = isMobile ? 0.003 : 0.001;
         const zoomSensitivity = 0.001;
 
         function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
@@ -227,19 +279,59 @@
             checkHover();
         }
 
-        function onPointerMove(e) {
-            if (document.pointerLockElement !== canvas) return;
-            const movementX = e.movementX || e.mozMovementX || e.webkitMovementX || 0;
-            const movementY = e.movementY || e.mozMovementY || e.webkitMovementY || 0;
-            spherical.theta -= movementX * lookSensitivity;
-            spherical.phi -= movementY * lookSensitivity;
+        function handleLookDelta(deltaX, deltaY) {
+            spherical.theta -= deltaX * lookSensitivity;
+            spherical.phi -= deltaY * lookSensitivity;
             spherical.theta = clamp(spherical.theta, minTheta, maxTheta);
             spherical.phi = clamp(spherical.phi, minPhi, maxPhi);
             updateCameraFromSpherical();
         }
 
-        function onWheel(e) {
+        function onPointerMove(e) {
             if (document.pointerLockElement !== canvas) return;
+            const movementX = e.movementX || e.mozMovementX || e.webkitMovementX || 0;
+            const movementY = e.movementY || e.mozMovementY || e.webkitMovementY || 0;
+            handleLookDelta(movementX, movementY);
+        }
+
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let isTouching = false;
+
+        function onTouchStart(e) {
+            if (e.touches.length === 1) {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+                isTouching = true;
+            }
+        }
+
+        function onTouchMove(e) {
+            if (!isTouching || e.touches.length !== 1) return;
+            e.preventDefault();
+            const currentX = e.touches[0].clientX;
+            const currentY = e.touches[0].clientY;
+            
+            const deltaX = currentX - touchStartX;
+            const deltaY = currentY - touchStartY;
+            
+            handleLookDelta(deltaX, deltaY);
+            
+            touchStartX = currentX;
+            touchStartY = currentY;
+        }
+
+        function onTouchEnd() {
+            isTouching = false;
+        }
+
+        canvas.addEventListener('touchstart', onTouchStart, { passive: false });
+        canvas.addEventListener('touchmove', onTouchMove, { passive: false });
+        canvas.addEventListener('touchend', onTouchEnd);
+        canvas.addEventListener('touchcancel', onTouchEnd);
+
+        function onWheel(e) {
+            if (!isMobile && document.pointerLockElement !== canvas) return;
             spherical.radius += e.deltaY * zoomSensitivity;
             spherical.radius = clamp(spherical.radius, minRadius, maxRadius);
             updateCameraFromSpherical();
@@ -265,12 +357,13 @@
 
             loaderOverlay.style.display = 'flex';
             loaderOverlay.style.opacity = '1';
-            loaderBar.style.width = '0%';
-            loaderText.textContent = 'Loading website...';
+            isModelLoaded = false;
+            startSimulatedProgress();
 
             fetch(url, { method: 'GET' }).then(resp => {
                 if (!resp.ok) {
                     console.error('Fetch error:', resp.status, resp.statusText);
+                    clearInterval(progressInterval);
                     loaderText.textContent = 'Fetch failed.';
                     return;
                 }
@@ -312,29 +405,18 @@
                         updateCameraFromSpherical();
                         console.log('GLB successfully loaded');
 
-                        loaderBar.style.width = '100%';
-                        loaderText.textContent = 'Initializing scene...';
-                        setTimeout(() => {
-                            loaderOverlay.style.opacity = '0';
-                            setTimeout(() => {
-                                loaderOverlay.style.display = 'none';
-                            }, 250);
-                        }, 200);
+                        completeSimulatedProgress();
                     },
-                    function (xhr) {
-                        if (xhr.lengthComputable) {
-                            const percent = Math.round((xhr.loaded / xhr.total) * 100);
-                            loaderBar.style.width = percent + '%';
-                            loaderText.textContent = `Loading website (${percent}%)...`;
-                        }
-                    },
+                    undefined,
                     function (err) {
                         console.error('GLB Loader Error:', err);
+                        clearInterval(progressInterval);
                         loaderText.textContent = 'Error loading model.';
                     }
                 );
             }).catch(err => {
                 console.error('Network Error:', err);
+                clearInterval(progressInterval);
                 loaderText.textContent = 'Network error.';
             });
         }
