@@ -198,7 +198,10 @@ const I18N = {
         'Stopped': 'Durduruldu',
         'About Apply': 'Başvuru Hakkında',
         'About Browser': 'Tarayıcı Hakkında',
-        'Open Application': 'Başvuruyu Aç'
+        'Open Application': 'Başvuruyu Aç',
+        'Loading images...': 'Görseller yükleniyor...',
+        'No images found in ': 'Şu klasörde görsel bulunamadı: ',
+        'This folder is empty.': 'Bu klasör boş.'
     }
 };
 
@@ -466,14 +469,27 @@ const GITHUB_REPO  = 'munderes27';
 const GITHUB_BRANCH = 'main';
 const GITHUB_API = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/`;
 
+const folderImageCache = new Map();
+
+function folderCacheKey(base) { return 'gh-folder:' + base; }
+
 async function loadFolderImagesFromGitHub(path) {
+    const key = folderCacheKey(path);
+    try {
+        const cached = sessionStorage.getItem(key);
+        if (cached) return JSON.parse(cached);
+    } catch (e) {}
     const res = await fetch(GITHUB_API + path, { cache: 'no-store' });
     if (!res.ok) return [];
     const entries = await res.json();
     if (!Array.isArray(entries)) return [];
-    return entries
+    const files = entries
         .filter(e => e.type === 'file' && IMAGE_EXT_RE.test(e.name) && e.download_url)
         .map(e => ({ name: e.name, src: e.download_url }));
+    if (files.length) {
+        try { sessionStorage.setItem(key, JSON.stringify(files)); } catch (e) {}
+    }
+    return files;
 }
 
 function joinImagePath(base, href) {
@@ -497,31 +513,38 @@ function parseDirListing(base, html) {
 
 async function loadFolderImages(path) {
     const base = path.endsWith('/') ? path : path + '/';
-    try {
-        const res = await fetch(base, { cache: 'no-store' });
-        if (res.ok) {
-            const text = await res.text();
-            const files = parseDirListing(base, text);
-            if (files.length) return files;
-        }
-    } catch (e) { /* fall through to manifest */ }
-    try {
-        const res = await fetch(base + 'image-index.json', { cache: 'no-store' });
-        if (res.ok) {
-            const data = await res.json();
-            const arr = Array.isArray(data) ? data : (data.images || []);
-            const files = arr.map(f => {
-                if (typeof f === 'string') return { name: f.split('/').pop(), src: joinImagePath(base, f) };
-                return { name: f.name || f.file, src: joinImagePath(base, f.src || f.file) };
-            }).filter(f => f.name && IMAGE_EXT_RE.test(f.name));
-            if (files.length) return files;
-        }
-    } catch (e) { /* nothing found */ }
-    try {
-        const files = await loadFolderImagesFromGitHub(base);
-        if (files.length) return files;
-    } catch (e) { /* GitHub API unavailable */ }
-    return [];
+    if (folderImageCache.has(base)) return folderImageCache.get(base);
+
+    // Try the local directory listing + manifest and the GitHub mirror in
+    // parallel, then take the first source that returns any images.
+    const local = (async () => {
+        try {
+            const res = await fetch(base, { cache: 'no-store' });
+            if (res.ok) {
+                const text = await res.text();
+                const files = parseDirListing(base, text);
+                if (files.length) return files;
+            }
+        } catch (e) { /* fall through to manifest */ }
+        try {
+            const res = await fetch(base + 'image-index.json', { cache: 'no-store' });
+            if (res.ok) {
+                const data = await res.json();
+                const arr = Array.isArray(data) ? data : (data.images || []);
+                const files = arr.map(f => {
+                    if (typeof f === 'string') return { name: f.split('/').pop(), src: joinImagePath(base, f) };
+                    return { name: f.name || f.file, src: joinImagePath(base, f.src || f.file) };
+                }).filter(f => f.name && IMAGE_EXT_RE.test(f.name));
+                if (files.length) return files;
+            }
+        } catch (e) { /* nothing found */ }
+        return [];
+    })();
+
+    const [localFiles, ghFiles] = await Promise.all([local, loadFolderImagesFromGitHub(base).catch(() => [])]);
+    const files = (localFiles && localFiles.length) ? localFiles : ghFiles;
+    folderImageCache.set(base, files);
+    return files;
 }
 
 function slugify(name) {
@@ -1536,13 +1559,13 @@ function renderExplorer(app, container) {
 
         let dynamicFiles = null;
         if (current.path) {
-            contentEl.innerHTML = '<span style="color:#808080; font-size:12px;">Loading images...</span>';
+            contentEl.innerHTML = `<span style="color:#808080; font-size:12px;">${t('Loading images...')}</span>`;
             try {
                 dynamicFiles = await loadFolderImages(current.path);
             } catch (e) { dynamicFiles = []; }
             if (contentEl.dataset.forId !== current.id) return;
             if (!dynamicFiles.length) {
-                contentEl.innerHTML = `<span style="color:#808080; font-size:12px;">No images found in ${current.path}.</span>`;
+                contentEl.innerHTML = `<span style="color:#808080; font-size:12px;">${t('No images found in ')}${current.path}.</span>`;
                 updateStatus();
                 return;
             }
@@ -1560,7 +1583,7 @@ function renderExplorer(app, container) {
             : staticItems;
 
         if (!shown.length) {
-            contentEl.innerHTML = `<span style="color:#808080; font-size:12px;">This folder is empty.</span>`;
+            contentEl.innerHTML = `<span style="color:#808080; font-size:12px;">${t('This folder is empty.')}</span>`;
             updateStatus();
             return;
         }
