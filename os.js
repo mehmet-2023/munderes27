@@ -459,6 +459,23 @@ function showAbout(appName) {
 // image-index.json manifest as a fallback.
 const IMAGE_EXT_RE = /\.(jpe?g|png|gif|webp|bmp)$/i;
 
+// GitHub repo mirror — used as a last-resort source for dynamic folder listings
+// (local directory listings and manifests may not be served on hosts like Vercel).
+const GITHUB_OWNER = 'mehmet-2023';
+const GITHUB_REPO  = 'munderes27';
+const GITHUB_BRANCH = 'main';
+const GITHUB_API = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/`;
+
+async function loadFolderImagesFromGitHub(path) {
+    const res = await fetch(GITHUB_API + path, { cache: 'no-store' });
+    if (!res.ok) return [];
+    const entries = await res.json();
+    if (!Array.isArray(entries)) return [];
+    return entries
+        .filter(e => e.type === 'file' && IMAGE_EXT_RE.test(e.name) && e.download_url)
+        .map(e => ({ name: e.name, src: e.download_url }));
+}
+
 function joinImagePath(base, href) {
     const clean = String(href).split(/[?#]/)[0];
     if (/^(https?:)?\/\//i.test(clean)) return clean;
@@ -500,6 +517,10 @@ async function loadFolderImages(path) {
             if (files.length) return files;
         }
     } catch (e) { /* nothing found */ }
+    try {
+        const files = await loadFolderImagesFromGitHub(base);
+        if (files.length) return files;
+    } catch (e) { /* GitHub API unavailable */ }
     return [];
 }
 
