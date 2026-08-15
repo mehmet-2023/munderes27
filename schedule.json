@@ -1,0 +1,29 @@
+{
+  "title": { "en": "Schedule", "tr": "Program" },
+  "days": [
+    {
+      "id": "day1",
+      "name": { "en": "Day 1", "tr": "1. Gün" },
+      "content": {
+        "en": "DAY 1 SCHEDULE\n===============\n09:00 - 10:00   Registration & Welcome Coffee\n10:30 - 12:00   Opening Ceremony\n12:30 - 13:30   Lunch Break\n14:00 - 15:00   Keynote Speech\n15:30 - 17:30   Icebreakers & Committee Introduction\n19:00 - 21:00   Welcome Night",
+        "tr": "1. GÜN PROGRAMI\n===============\n09:00 - 10:00   Kayıt ve Karşılama Kahvesi\n10:30 - 12:00   Açılış Töreni\n12:30 - 13:30   Öğle Arası\n14:00 - 15:00   Açılış Konuşması\n15:30 - 17:30   Kaynaşma Oyunları ve Komite Tanıtımı\n19:00 - 21:00   Karşılama Gecesi"
+      }
+    },
+    {
+      "id": "day2",
+      "name": { "en": "Day 2", "tr": "2. Gün" },
+      "content": {
+        "en": "DAY 2 SCHEDULE\n===============\n09:00 - 10:30   Committee Session I\n10:30 - 11:00   Coffee Break\n11:00 - 12:30   Committee Session II\n12:30 - 13:30   Lunch Break\n14:00 - 16:00   Lobbying & Unmoderated Caucus\n16:30 - 18:00   Workshops\n20:00 - 23:00   Social Night",
+        "tr": "2. GÜN PROGRAMI\n===============\n09:00 - 10:30   Komite Oturumu I\n10:30 - 11:00   Kahve Molası\n11:00 - 12:30   Komite Oturumu II\n12:30 - 13:30   Öğle Arası\n14:00 - 16:00   Lobiler ve Gayriresmi Oturumlar\n16:30 - 18:00   Çalıştaylar\n20:00 - 23:00   Sosyal Gece"
+      }
+    },
+    {
+      "id": "day3",
+      "name": { "en": "Day 3", "tr": "3. Gün" },
+      "content": {
+        "en": "DAY 3 SCHEDULE\n===============\n09:00 - 10:30   Committee Session III\n10:30 - 11:00   Coffee Break\n11:00 - 12:30   Final Voting & Draft Resolutions\n12:30 - 13:30   Lunch Break\n14:00 - 16:00   General Assembly\n16:30 - 17:30   Closing Ceremony & Awards",
+        "tr": "3. GÜN PROGRAMI\n===============\n09:00 - 10:30   Komite Oturumu III\n10:30 - 11:00   Kahve Molası\n11:00 - 12:30   Son Oylamalar ve Karar Taslakları\n12:30 - 13:30   Öğle Arası\n14:00 - 16:00   Genel Kurul\n16:30 - 17:30   Kapanış Töreni ve Ödüller"
+      }
+    }
+  ]
+}

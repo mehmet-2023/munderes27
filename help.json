@@ -1,0 +1,101 @@
+{
+  "title": { "en": "MUNDERES 27 Help-FAQs", "tr": "MUNDERES 27 Yardım-SSS" },
+  "topics": [
+    {
+      "id": "event",
+      "title": { "en": "Event", "tr": "Etkinlik" },
+      "items": [
+        {
+          "q": { "en": "Who can enter the event?", "tr": "Etkinliğe kimler katılabilir?" },
+          "a": {
+            "en": "MUNDERES 27 is open to university students with a valid student ID and an approved registration. All participants must be accredited at the entrance desk before joining the sessions.",
+            "tr": "MUNDERES 27, geçerli bir öğrenci kimliğine ve onaylanmış bir kayda sahip üniversite öğrencilerine açıktır. Tüm katılımcıların oturumlara katılmadan önce giriş masasında akredite edilmesi gerekir."
+          }
+        },
+        {
+          "q": { "en": "Is there a dress code?", "tr": "Kıyafet kuralı var mı?" },
+          "a": {
+            "en": "Yes. The dress code for the conference is Western Business Attire (WBA). Please make sure your outfit is professional and appropriate for committee sessions.",
+            "tr": "Evet. Konferans için kıyafet kuralı Batı İş Kıyafeti (WBA) olarak belirlenmiştir. Lütfen kıyafetinizin komite oturumlarına uygun ve profesyonel olduğundan emin olun."
+          }
+        },
+        {
+          "q": { "en": "Where is the event held?", "tr": "Etkinlik nerede yapılıyor?" },
+          "a": {
+            "en": "The event takes place at the venue shown in the Event Location map, which you can open from the Conference details folder on the desktop.",
+            "tr": "Etkinlik, masaüstündeki Konferans Detayları klasöründen açabileceğiniz Etkinlik Konumu haritasında gösterilen mekanda gerçekleştirilir."
+          }
+        },
+        {
+          "q": { "en": "What does the schedule look like?", "tr": "Program nasıl görünüyor?" },
+          "a": {
+            "en": "Day 1 starts with the Opening Ceremony and the Keynote Speech. Day 2 is reserved for Committee Sessions and Workshops. Day 3 closes with the General Assembly and the Closing Ceremony. See the Schedule folder for details.",
+            "tr": "1. Gün Açılış Töreni ve Açılış Konuşması ile başlar. 2. Gün Komite Oturumları ve Çalıştaylara ayrılmıştır. 3. Gün Genel Kurul ve Kapanış Töreni ile sona erer. Ayrıntılar için Program klasörüne bakın."
+          }
+        },
+        {
+          "q": { "en": "How can I register for the event?", "tr": "Etkinliğe nasıl kayıt olabilirim?" },
+          "a": {
+            "en": "Registration is done online through the Apply application on the desktop. Fill out the form, and your team will confirm your accreditation before the event.",
+            "tr": "Kayıt, masaüstündeki Başvur uygulaması üzerinden çevrimiçi olarak yapılır. Formu doldurun; ekibiniz etkinlikten önce akreditasyonunuzu onaylayacaktır."
+          }
+        },
+        {
+          "q": { "en": "Who should I contact with questions?", "tr": "Sorularım için kime ulaşabilirim?" },
+          "a": {
+            "en": "You can reach out to any member of our team. Open the Our Team folder and read the member log files to find the right contact for your question.",
+            "tr": "Ekibimizden herhangi bir üyeye ulaşabilirsiniz. Ekibimiz klasörünü açın ve sorunuz için doğru kişiyi bulmak üzere üye günlük dosyalarını okuyun."
+          }
+        }
+      ]
+    },
+    {
+      "id": "website",
+      "title": { "en": "Using this Website", "tr": "Bu Web Sitesini Kullanma" },
+      "items": [
+        {
+          "q": { "en": "How do I open an application?", "tr": "Bir uygulamayı nasıl açarım?" },
+          "a": {
+            "en": "Double-click an icon on the desktop to open it. On touch screens, tap the icon twice quickly. Folders open a window where you can keep browsing.",
+            "tr": "Açmak için masaüstündeki bir simgeye çift tıklayın. Dokunmatik ekranlarda simgeye hızlıca iki kez dokunun. Klasörler, gezinmeye devam edebileceğiniz bir pencere açar."
+          }
+        },
+        {
+          "q": { "en": "How do I navigate between folders?", "tr": "Klasörler arasında nasıl gezinirim?" },
+          "a": {
+            "en": "When a folder window is open, use the Back and Forward buttons, the Up button, or type a path in the Address bar. You can also click folders in the tree panel on the left.",
+            "tr": "Bir klasör penceresi açıkken Geri ve İleri düğmelerini, Yukarı düğmesini kullanın veya Adres çubuğuna bir yol yazın. Ayrıca soldaki ağaç panelindeki klasörlere tıklayabilirsiniz."
+          }
+        },
+        {
+          "q": { "en": "How do I view the photos from previous editions?", "tr": "Önceki edisyonların fotoğraflarını nasıl görürüm?" },
+          "a": {
+            "en": "Open the Previous editions folder, then open the year you want (2024, 2025 or 2026). A photo viewer opens where you can move between pictures with the arrows.",
+            "tr": "Önceki Edisyonlar klasörünü açın, ardından istediğiniz yılı (2024, 2025 veya 2026) açın. Oklar arasında fotoğraflar arasında gezinebileceğiniz bir fotoğraf görüntüleyici açılır."
+          }
+        },
+        {
+          "q": { "en": "How do I view the team members?", "tr": "Ekip üyelerini nasıl görürüm?" },
+          "a": {
+            "en": "Open the Our Team folder and double-click a member log file. Use the forward and back buttons to switch between the team members in the log window.",
+            "tr": "Ekibimiz klasörünü açın ve bir üye günlük dosyasına çift tıklayın. Günlük penceresinde ekip üyeleri arasında geçiş yapmak için ileri ve geri düğmelerini kullanın."
+          }
+        },
+        {
+          "q": { "en": "How do I close a window?", "tr": "Bir pencereyi nasıl kapatırım?" },
+          "a": {
+            "en": "Click the X button in the top-right corner of the window, use File > Close or File > Exit, or press Alt+F4 on your keyboard.",
+            "tr": "Pencerenin sağ üst köşesindeki X düğmesine tıklayın, Dosya > Kapat veya Dosya > Çıkış kullanın veya klavyede Alt+F4 tuşlarına basın."
+          }
+        },
+        {
+          "q": { "en": "Something is not working. What do I do?", "tr": "Bir şey çalışmıyor. Ne yapmalıyım?" },
+          "a": {
+            "en": "Try refreshing the window with View > Refresh or the F5 key. If the problem continues, contact the IT team and describe the issue and which window you were using.",
+            "tr": "Pencereyi Görünüm > Yenile veya F5 tuşuyla yenilemeyi deneyin. Sorun devam ederse IT ekibiyle iletişime geçin ve sorunu ve hangi pencereyi kullandığınızı açıklayın."
+          }
+        }
+      ]
+    }
+  ]
+}

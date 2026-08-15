@@ -1,0 +1,35 @@
+{
+  "title": { "en": "Apply to MUNDERES'26", "tr": "MUNDERES'26'ya Başvur" },
+  "applications": [
+    {
+      "id": "admin",
+      "name": { "en": "Admin", "tr": "Yönetici" },
+      "description": { "en": "Apply as conference admin / staff.", "tr": "Konferans yöneticisi / ekip olarak başvurun." },
+      "url": "https://google.com"
+    },
+    {
+      "id": "individual",
+      "name": { "en": "Individual Delegate", "tr": "Bireysel Delege" },
+      "description": { "en": "Apply as a delegate without a delegation.", "tr": "Bir delegasyona bağlı olmadan delege olarak başvurun." },
+      "url": "https://google.com"
+    },
+    {
+      "id": "delegation",
+      "name": { "en": "Delegation", "tr": "Delegasyon" },
+      "description": { "en": "Apply as a school / delegation with multiple delegates.", "tr": "Birden fazla delege içeren okul / delegasyon olarak başvurun." },
+      "url": "https://google.com"
+    },
+    {
+      "id": "press",
+      "name": { "en": "Press", "tr": "Basın" },
+      "description": { "en": "Apply as press / media correspondent.", "tr": "Basın / medya muhabiri olarak başvurun." },
+      "url": "https://google.com"
+    },
+    {
+      "id": "moderator",
+      "name": { "en": "Moderator", "tr": "Moderatör" },
+      "description": { "en": "Apply as committee moderator / chair.", "tr": "Komite moderatörü / başkan olarak başvurun." },
+      "url": "https://google.com"
+    }
+  ]
+}

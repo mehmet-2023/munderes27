@@ -408,6 +408,35 @@
             padding: 1px 2px;
         }
 
+        /* Help app: topics column narrower than the FAQ area */
+        .help-topics-col {
+            width: 180px;
+        }
+
+        #win98-watermark {
+            position: absolute;
+            right: 10px;
+            bottom: 36px; /* sits just above the taskbar */
+            font-family: "MS Sans Serif", Tahoma, Verdana, sans-serif;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.85);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            user-select: none;
+            z-index: 5; /* above the wallpaper, below windows/taskbar */
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        #win98-watermark a {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            pointer-events: auto;
+            cursor: pointer;
+        }
+        #win98-watermark a:hover {
+            text-decoration: underline;
+        }
+
         .win98-window {
             position: absolute;
             background-color: #c0c0c0;
@@ -486,6 +515,25 @@
             overflow: auto;
             font-size: 12px;
         }
+
+        /* Window resize handles (all edges + corners, mouse & touch) */
+        .win98-resize {
+            position: absolute;
+            z-index: 20;
+            touch-action: none;
+        }
+        .win98-resize-n  { top: -3px;  left: 10px;  right: 10px; height: 6px; cursor: ns-resize; }
+        .win98-resize-s  { bottom: -3px; left: 10px; right: 10px; height: 6px; cursor: ns-resize; }
+        .win98-resize-e  { right: -3px; top: 10px;  bottom: 10px; width: 6px; cursor: ew-resize; }
+        .win98-resize-w  { left: -3px;  top: 10px;  bottom: 10px; width: 6px; cursor: ew-resize; }
+        .win98-resize-ne { top: -3px;   right: -3px; width: 12px; height: 12px; cursor: nesw-resize; }
+        .win98-resize-nw { top: -3px;   left: -3px;  width: 12px; height: 12px; cursor: nwse-resize; }
+        .win98-resize-se { bottom: -3px; right: -3px; width: 16px; height: 16px; cursor: se-resize;
+            background-color: #c0c0c0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cg stroke-width='1'%3E%3Cpath d='M-1 2 L2 -1 M-1 6 L6 -1 M-1 10 L10 -1 M-1 14 L14 -1' stroke='%23808080'/%3E%3Cpath d='M-1 3.5 L3.5 -1 M-1 7.5 L7.5 -1 M-1 11.5 L11.5 -1 M-1 15.5 L15.5 -1' stroke='%23ffffff'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .win98-resize-sw { bottom: -3px; left: -3px;  width: 12px; height: 12px; cursor: nesw-resize; }
+        .win98-window.win98-maximized .win98-resize { display: none; }
 
         .win98-taskbar {
             height: 30px;
@@ -644,18 +692,27 @@
 
         /* ── Mobile OS internals ── */
         @media (max-width: 768px), (pointer: coarse) {
-            /* Smaller default window size */
+            /* Smaller default window size (user can still drag-resize) */
             .win98-window {
                 width: 90vw;
-                max-width: 90vw;
                 height: 60vh;
-                max-height: 60vh;
                 min-width: 0;
             }
 
             /* Taller taskbar for easier tapping */
             .win98-taskbar {
                 height: 40px;
+            }
+
+            /* Help app: topics column becomes much narrower so the FAQ area is wider */
+            .help-topics-col {
+                width: 34%;
+            }
+
+            #win98-watermark {
+                bottom: 46px; /* clear the taller mobile taskbar */
+                right: 8px;
+                font-size: 11px;
             }
 
             .win98-start-btn {
@@ -699,6 +756,102 @@
                 overflow-y: auto;
             }
         }
+
+        #win98-login-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #008080;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+        }
+
+        .login-dialog {
+            width: 350px;
+            max-width: 90vw;
+            background-color: #c0c0c0;
+            border-top: 2px solid #ffffff;
+            border-left: 2px solid #ffffff;
+            border-right: 2px solid #000000;
+            border-bottom: 2px solid #000000;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+        }
+        .login-titlebar {
+            background: linear-gradient(90deg, #000080, #1084d0);
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 12px;
+            padding: 3px 4px;
+        }
+        .login-content {
+            padding: 15px;
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+        }
+        .login-form {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .login-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .login-row input {
+            width: 130px;
+            padding: 2px 4px;
+            border-top: 2px solid #808080;
+            border-left: 2px solid #808080;
+            border-right: 2px solid #ffffff;
+            border-bottom: 2px solid #ffffff;
+            background: #fff;
+            outline: none;
+        }
+        .login-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .login-btn {
+            width: 70px;
+            padding: 4px;
+            background-color: #c0c0c0;
+            border-top: 2px solid #ffffff;
+            border-left: 2px solid #ffffff;
+            border-right: 2px solid #000000;
+            border-bottom: 2px solid #000000;
+            font-size: 11px;
+            cursor: pointer;
+        }
+        .login-btn:active {
+            border-top: 2px solid #000000;
+            border-left: 2px solid #000000;
+            border-right: 2px solid #ffffff;
+            border-bottom: 2px solid #ffffff;
+            padding: 5px 3px 3px 5px;
+        }
+
+        /* Text size scaling driven by Control Panel settings */
+        .win98-icon-text,
+        .win98-start-item,
+        .win98-task-item,
+        .win98-start-btn,
+        .win98-window-title-text {
+            font-size: calc(11px * var(--os-text-scale, 1)) !important;
+        }
+        #tray-clock,
+        .win98-task-item span {
+            font-size: calc(11px * var(--os-text-scale, 1)) !important;
+        }
     </style>
 </head>
 <body>
@@ -735,6 +888,38 @@
         <div id="win98-boot-screen">
             <img id="win98-boot-logo" src="logo.png" alt="Windows Logo" />
         </div>
+
+        <div id="win98-login-screen">
+            <div class="login-dialog">
+                <div class="login-titlebar"><span data-i18n="Enter Network Password">Enter Network Password</span></div>
+                <div class="login-content">
+                    <div>
+                        <svg viewBox="0 0 32 32" style="width: 32px; height: 32px;">
+                            <path d="M22,18 A8,8 0 1,0 14,10 A8,8 0 0,0 22,18 Z" fill="#ffd700" stroke="#000" stroke-width="1"/>
+                            <circle cx="22" cy="10" r="3" fill="#fff" stroke="#000" stroke-width="1"/>
+                            <path d="M16.5,15.5 L6,26 L6,30 L10,30 L10,26 L14,26 L14,22 L17.5,18.5" fill="none" stroke="#ffd700" stroke-width="4"/>
+                            <path d="M16.5,15.5 L6,26 L6,30 L10,30 L10,26 L14,26 L14,22 L17.5,18.5" fill="none" stroke="#000" stroke-width="1"/>
+                        </svg>
+                    </div>
+                    <div class="login-form">
+                        <p style="margin:0 0 5px 0;" data-i18n="Type a user name and password to log on.">Type a user name and password to log on.</p>
+                        <div class="login-row">
+                            <label data-i18n="User name:">User name:</label>
+                            <input type="text" id="login-username" value="user" readonly>
+                        </div>
+                        <div class="login-row">
+                            <label data-i18n="Password:">Password:</label>
+                            <input type="password" id="login-password" value="1234">
+                        </div>
+                    </div>
+                    <div class="login-buttons">
+                        <button class="login-btn" id="login-ok-btn" data-i18n="OK">OK</button>
+                        <button class="login-btn" id="login-cancel-btn" data-i18n="Cancel">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="win98-desktop">
             <div class="win98-desktop-icons" id="desktop-icons-container"></div>
             
@@ -742,6 +927,8 @@
                 <div class="win98-start-sidebar">Munderes'27</div>
                 <div class="win98-start-items" id="start-menu-items"></div>
             </div>
+
+            <div id="win98-watermark">Website By: <a href="https://instagram.com/mhmtt1520" target="_blank" rel="noopener">OCAL</a></div>
 
             <div class="win98-taskbar">
                 <div class="win98-taskbar-left">
@@ -971,8 +1158,45 @@
             startLookTarget.copy(lookTarget);
             animStartTime = performance.now();
             isAnimatingCamera = true;
+            isReversingCamera = false;
             osOpened = false;
         }
+
+        let isReversingCamera = false;
+        
+        window.shutDownOS = function() {
+            if (window.SOUND) SOUND.shutdown();
+            // Show boot screen in black again
+            win98BootScreen.style.display = 'flex';
+            win98BootScreen.style.transition = 'opacity 0.5s ease';
+            win98BootScreen.style.opacity = '1';
+            win98BootLogo.style.opacity = '1';
+
+            // Wait a bit, then fade out the whole OS overlay and zoom camera out
+            setTimeout(() => {
+                win98Overlay.style.opacity = '0';
+                setTimeout(() => {
+                    win98Overlay.style.display = 'none';
+                    // Re-set for next time
+                    win98BootScreen.style.display = 'flex';
+                    win98BootScreen.style.opacity = '1';
+                    win98BootLogo.style.opacity = '0'; 
+                    isPcClicked = false;
+                    
+                    if (isMobile) {
+                        mobileTapHint.style.display = 'block';
+                    } else {
+                        pcSubtitle.style.display = 'block';
+                        if (document.pointerLockElement !== canvas) canvas.requestPointerLock();
+                    }
+                }, 800);
+                
+                // Start camera reverse animation
+                animStartTime = performance.now();
+                isReversingCamera = true;
+
+            }, 2000); 
+        };
 
         renderer.domElement.addEventListener('contextmenu', (e) => {
             e.preventDefault();
@@ -1246,6 +1470,26 @@
                 if (elapsed >= 1100 && !osOpened) {
                     osOpened = true;
                     triggerWin98OS();
+                }
+            } else if (isReversingCamera) {
+                const elapsed = time - animStartTime;
+                let progress = elapsed / animDuration;
+
+                if (progress >= 1) {
+                    progress = 1;
+                    isReversingCamera = false;
+                }
+
+                const easeProgress = easeInOutCubic(progress);
+
+                camera.position.lerpVectors(targetCamPos, startCamPos, easeProgress);
+                lookTarget.lerpVectors(targetLookTarget, startLookTarget, easeProgress);
+                camera.lookAt(lookTarget);
+                
+                if (progress === 1) {
+                    const offset = camera.position.clone().sub(lookTarget);
+                    spherical.setFromVector3(offset);
+                    checkHover();
                 }
             }
 
