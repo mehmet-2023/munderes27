@@ -410,30 +410,63 @@ function closeWindow(id) {
     }
 }
 
-// ── Window drag (titlebar) ─────────────────────────────────────────────────
+// ── Window drag (titlebar) — mouse + touch ─────────────────────────────────
 function makeDraggable(winEl, handleEl) {
     let p1 = 0, p2 = 0, p3 = 0, p4 = 0;
-    handleEl.onmousedown = down;
 
-    function down(e) {
+    // ── Mouse ──────────────────────────────────────────────────────────────
+    handleEl.addEventListener('mousedown', onMouseDown);
+
+    function onMouseDown(e) {
         if (e.target.classList.contains('win98-win-btn')) return;
         if (winEl.dataset.maximized === 'true') return;
         e.preventDefault();
         p3 = e.clientX; p4 = e.clientY;
-        document.onmouseup   = up;
-        document.onmousemove = move;
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup',   onMouseUp);
     }
-    function move(e) {
+    function onMouseMove(e) {
         e.preventDefault();
         p1 = p3 - e.clientX; p2 = p4 - e.clientY;
         p3 = e.clientX;      p4 = e.clientY;
         winEl.style.top  = (winEl.offsetTop  - p2) + 'px';
         winEl.style.left = (winEl.offsetLeft - p1) + 'px';
     }
-    function up() {
-        document.onmouseup   = null;
-        document.onmousemove = null;
+    function onMouseUp() {
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup',   onMouseUp);
+    }
+
+    // ── Touch ──────────────────────────────────────────────────────────────
+    handleEl.addEventListener('touchstart', onTouchDown, { passive: false });
+
+    function onTouchDown(e) {
+        if (e.target.classList.contains('win98-win-btn')) return;
+        if (winEl.dataset.maximized === 'true') return;
+        if (e.touches.length !== 1) return;
+        e.preventDefault();
+        p3 = e.touches[0].clientX;
+        p4 = e.touches[0].clientY;
+        document.addEventListener('touchmove',   onTouchMove, { passive: false });
+        document.addEventListener('touchend',    onTouchUp);
+        document.addEventListener('touchcancel', onTouchUp);
+    }
+    function onTouchMove(e) {
+        if (e.touches.length !== 1) return;
+        e.preventDefault();
+        const tx = e.touches[0].clientX;
+        const ty = e.touches[0].clientY;
+        p1 = p3 - tx; p2 = p4 - ty;
+        p3 = tx;      p4 = ty;
+        winEl.style.top  = (winEl.offsetTop  - p2) + 'px';
+        winEl.style.left = (winEl.offsetLeft - p1) + 'px';
+    }
+    function onTouchUp() {
+        document.removeEventListener('touchmove',   onTouchMove);
+        document.removeEventListener('touchend',    onTouchUp);
+        document.removeEventListener('touchcancel', onTouchUp);
     }
 }
+
 
 window.addEventListener('DOMContentLoaded', initDesktop);
