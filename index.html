@@ -44,6 +44,7 @@
     <script type="module">
         import * as THREE from 'three';
         import { GLTFLoader } from 'https://unpkg.com/three@0.153.0/examples/jsm/loaders/GLTFLoader.js';
+        import { DRACOLoader } from 'https://unpkg.com/three@0.153.0/examples/jsm/loaders/DRACOLoader.js';
         import { OrbitControls } from 'https://unpkg.com/three@0.153.0/examples/jsm/controls/OrbitControls.js';
 
         const canvas = document.getElementById('canvas');
@@ -110,18 +111,27 @@
             }
         });
 
-        const hemi = new THREE.HemisphereLight(0xffffff, 0x444444, 1.2);
+        const hemi = new THREE.HemisphereLight(0xfff3e0, 0x3d3228, 0.6);
         hemi.position.set(0, 20, 0);
         scene.add(hemi);
-        const dir = new THREE.DirectionalLight(0xffffff, 0.8);
+
+        const dir = new THREE.DirectionalLight(0xfff0d6, 0.7);
         dir.position.set(5, 10, 7.5);
         scene.add(dir);
 
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+
         const loader = new GLTFLoader();
+        loader.setDRACOLoader(dracoLoader);
 
         let lookTarget = new THREE.Vector3(0.063, 1.610, -1.099);
         const spherical = new THREE.Spherical();
+        
+        let initialTheta = 0;
+        const maxThetaOffset = (150 * Math.PI / 180) / 2;
         let minTheta = -Infinity, maxTheta = Infinity;
+
         let minPhi = 0.01, maxPhi = Math.PI - 0.01;
         let minRadius = 0.5, maxRadius = 10.0;
         const lookSensitivity = 0.001;
@@ -187,8 +197,6 @@
                         lookTarget.set(0.063, 1.610, -1.099);
                         const posInit = new THREE.Vector3(2.859, 1.427, -1.192);
 
-                        const posLeft = new THREE.Vector3(0.200, 1.427, -1.192);
-                        const posRight = new THREE.Vector3(3.800, 1.427, -1.192);
                         const posTop = new THREE.Vector3(2.859, 1.261, -1.192);
                         const posBottom = new THREE.Vector3(2.859, 2.766, -1.192);
 
@@ -202,18 +210,16 @@
                         minRadius = spherical.radius * 0.3;
                         maxRadius = spherical.radius * 2.5;
 
-                        const offLeft = posLeft.clone().sub(lookTarget);
-                        const offRight = posRight.clone().sub(lookTarget);
+                        initialTheta = spherical.theta;
+                        minTheta = initialTheta - maxThetaOffset;
+                        maxTheta = initialTheta + maxThetaOffset;
+
                         const offTop = posTop.clone().sub(lookTarget);
                         const offBottom = posBottom.clone().sub(lookTarget);
 
-                        const sphLeft = new THREE.Spherical().setFromVector3(offLeft);
-                        const sphRight = new THREE.Spherical().setFromVector3(offRight);
                         const sphTop = new THREE.Spherical().setFromVector3(offTop);
                         const sphBottom = new THREE.Spherical().setFromVector3(offBottom);
 
-                        minTheta = Math.min(sphLeft.theta, sphRight.theta);
-                        maxTheta = Math.max(sphLeft.theta, sphRight.theta);
                         minPhi = Math.min(sphTop.phi, sphBottom.phi);
                         maxPhi = Math.max(sphTop.phi, sphBottom.phi);
 
