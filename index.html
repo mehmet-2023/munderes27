@@ -297,8 +297,8 @@
             top: 2.5vh;
             left: 2.5vw;
             width: 95vw;
+            /* Layered fallbacks: plain vh → dvh (excludes browser chrome) */
             height: 95vh;
-            /* Use dvh where supported so mobile browser chrome is excluded */
             height: 95dvh;
             background-color: #008080;
             z-index: 99999;
@@ -312,16 +312,15 @@
             box-sizing: border-box;
         }
 
-        /* Mobile: go full-screen so nothing overflows */
+        /* Mobile: true full-screen */
         @media (max-width: 768px), (pointer: coarse) {
             #win98-os-overlay {
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100dvh;
-                height: 100vh; /* fallback */
-                border: none;
-                border-radius: 0;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                height: 100dvh !important;
+                border: none !important;
             }
         }
 
@@ -353,14 +352,15 @@
             background-color: #008080;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             z-index: 1;
         }
 
+        /* Icons area grows to fill remaining space above taskbar */
         .win98-desktop-icons {
             position: relative;
             width: 100%;
-            height: calc(100% - 40px);
+            flex: 1 1 0;
+            min-height: 0;
             box-sizing: border-box;
             overflow: hidden;
         }
@@ -489,6 +489,7 @@
 
         .win98-taskbar {
             height: 30px;
+            flex-shrink: 0; /* never squish — always visible */
             background-color: #c0c0c0;
             border-top: 2px solid #ffffff;
             display: flex;
@@ -639,6 +640,66 @@
             border-top: 1px solid #808080;
             border-bottom: 1px solid #ffffff;
             margin: 2px 0;
+        }
+
+        /* ── Mobile OS internals ── */
+        @media (max-width: 768px), (pointer: coarse) {
+            /* Smaller default window size */
+            .win98-window {
+                width: 90vw !important;
+                max-width: 90vw;
+                height: 60vh !important;
+                max-height: 60vh;
+                min-width: 0;
+                left: 5vw !important;
+                top: 5vh !important;
+            }
+
+            /* Taller taskbar for easier tapping */
+            .win98-taskbar {
+                height: 40px;
+            }
+
+            .win98-start-btn {
+                height: 30px;
+                font-size: 13px;
+                padding: 0 10px;
+                gap: 6px;
+            }
+
+            .win98-task-item {
+                height: 30px;
+                min-width: 80px;
+                max-width: 120px;
+                font-size: 12px;
+            }
+
+            .win98-tray {
+                height: 30px;
+                font-size: 12px;
+                padding: 0 8px;
+            }
+
+            /* Start menu: taller entries for touch */
+            .win98-start-item {
+                padding: 10px 14px;
+                font-size: 13px;
+            }
+
+            .win98-start-menu {
+                width: 220px;
+                bottom: 40px;
+            }
+
+            /* Desktop icons: keep icons in columns on left */
+            .win98-icon {
+                width: 76px;
+            }
+
+            /* Desktop icons container: allow scroll if icons overflow */
+            .win98-desktop-icons {
+                overflow-y: auto;
+            }
         }
     </style>
 </head>

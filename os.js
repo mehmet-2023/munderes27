@@ -130,76 +130,95 @@ function hideGhost() {
     if (ghostEl) ghostEl.style.display = 'none';
 }
 
-// ── Make a desktop icon draggable with grid-snap ───────────────────────────
+// ── Make a desktop icon draggable with grid-snap (mouse + touch) ────────────
 function makeIconDraggable(iconEl, app) {
     let dragging = false;
-    let startMouseX, startMouseY;
+    let startPointerX, startPointerY;
     let startLeft, startTop;
-    const DRAG_THRESHOLD = 5;
+    const DRAG_THRESHOLD = 8;
 
+    function beginDrag(clientX, clientY) {
+        startPointerX = clientX;
+        startPointerY = clientY;
+        startLeft     = iconEl.offsetLeft;
+        startTop      = iconEl.offsetTop;
+        dragging      = false;
+    }
+
+    function moveDrag(clientX, clientY) {
+        const dx = clientX - startPointerX;
+        const dy = clientY - startPointerY;
+
+        if (!dragging && Math.hypot(dx, dy) > DRAG_THRESHOLD) {
+            dragging = true;
+            iconEl.style.opacity      = '0.6';
+            iconEl.style.zIndex       = '9000';
+            iconEl.style.pointerEvents = 'none';
+            document.querySelectorAll('.win98-icon').forEach(el => el.classList.remove('selected'));
+        }
+        if (!dragging) return;
+
+        const px = startLeft + dx;
+        const py = startTop  + dy;
+        iconEl.style.left = px + 'px';
+        iconEl.style.top  = py + 'px';
+
+        const { col, row } = pixelToGrid(px, py);
+        showGhost(findNearestEmpty(col, row, app.id).col, findNearestEmpty(col, row, app.id).row);
+    }
+
+    function endDrag() {
+        iconEl.style.opacity       = '1';
+        iconEl.style.zIndex        = '1';
+        iconEl.style.pointerEvents = '';
+
+        if (dragging) {
+            dragging = false;
+            hideGhost();
+            const px = iconEl.offsetLeft;
+            const py = iconEl.offsetTop;
+            const { col, row } = pixelToGrid(px, py);
+            const best = findNearestEmpty(col, row, app.id);
+            placeIconAt(iconEl, app.id, best.col, best.row);
+        }
+    }
+
+    // ── Mouse ──────────────────────────────────────────────────────────────
     iconEl.addEventListener('mousedown', (e) => {
         if (e.button !== 0) return;
         e.preventDefault();
-        startMouseX = e.clientX;
-        startMouseY = e.clientY;
-        startLeft   = iconEl.offsetLeft;
-        startTop    = iconEl.offsetTop;
-        dragging    = false;
+        beginDrag(e.clientX, e.clientY);
 
-        function onMouseMove(ev) {
-            const dx = ev.clientX - startMouseX;
-            const dy = ev.clientY - startMouseY;
-
-            if (!dragging && Math.hypot(dx, dy) > DRAG_THRESHOLD) {
-                dragging = true;
-                iconEl.style.opacity  = '0.6';
-                iconEl.style.zIndex   = '9000';
-                iconEl.style.pointerEvents = 'none';
-                // deselect on drag start
-                document.querySelectorAll('.win98-icon').forEach(el => el.classList.remove('selected'));
-            }
-
-            if (!dragging) return;
-
-            const container = document.getElementById('desktop-icons-container');
-            const rect = container.getBoundingClientRect();
-
-            // Follow mouse freely
-            const px = startLeft + dx;
-            const py = startTop  + dy;
-            iconEl.style.left = px + 'px';
-            iconEl.style.top  = py + 'px';
-
-            // Show ghost at nearest empty cell
-            const { col, row } = pixelToGrid(px, py);
-            const best = findNearestEmpty(col, row, app.id);
-            showGhost(best.col, best.row);
-        }
-
-        function onMouseUp(ev) {
-            document.removeEventListener('mousemove', onMouseMove);
-            document.removeEventListener('mouseup',   onMouseUp);
-
-            iconEl.style.opacity = '1';
-            iconEl.style.zIndex  = '1';
-            iconEl.style.pointerEvents = '';
-
-            if (dragging) {
-                dragging = false;
-                hideGhost();
-
-                const px = iconEl.offsetLeft;
-                const py = iconEl.offsetTop;
-                const { col, row } = pixelToGrid(px, py);
-                const best = findNearestEmpty(col, row, app.id);
-                placeIconAt(iconEl, app.id, best.col, best.row);
-            }
-        }
-
-        document.addEventListener('mousemove', onMouseMove);
-        document.addEventListener('mouseup',   onMouseUp);
+        function onMove(ev) { moveDrag(ev.clientX, ev.clientY); }
+        function onUp()     { endDrag(); document.removeEventListener('mousemove', onMove); document.removeEventListener('mouseup', onUp); }
+        document.addEventListener('mousemove', onMove);
+        document.addEventListener('mouseup',   onUp);
     });
+
+    // ── Touch ──────────────────────────────────────────────────────────────
+    iconEl.addEventListener('touchstart', (e) => {
+        if (e.touches.length !== 1) return;
+        // Don't preventDefault here so click/dblclick still fires on short taps
+        const t = e.touches[0];
+        beginDrag(t.clientX, t.clientY);
+
+        function onMove(ev) {
+            if (ev.touches.length !== 1) return;
+            ev.preventDefault(); // prevent page scroll only when we know it's a drag
+            moveDrag(ev.touches[0].clientX, ev.touches[0].clientY);
+        }
+        function onUp() {
+            endDrag();
+            iconEl.removeEventListener('touchmove',   onMove);
+            iconEl.removeEventListener('touchend',    onUp);
+            iconEl.removeEventListener('touchcancel', onUp);
+        }
+        iconEl.addEventListener('touchmove',   onMove, { passive: false });
+        iconEl.addEventListener('touchend',    onUp);
+        iconEl.addEventListener('touchcancel', onUp);
+    }, { passive: true });
 }
+
 
 // ── State ──────────────────────────────────────────────────────────────────
 let openWindows   = {};
