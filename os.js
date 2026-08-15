@@ -798,13 +798,10 @@ function initDesktop() {
     container.innerHTML      = '';
     startMenuItems.innerHTML = '';
 
-    // Detect mobile/touch for layout decisions
-    const isMobileLayout = window.matchMedia('(max-width: 768px), (pointer: coarse)').matches;
-
     DESKTOP_APPS.forEach((app, index) => {
-        // 2-column layout on mobile, 1-column on desktop
-        const col = isMobileLayout ? (index % 2) : 0;
-        const row = isMobileLayout ? Math.floor(index / 2) : index;
+        // 2-column layout in all views
+        const col = index % 2;
+        const row = Math.floor(index / 2);
 
         const iconEl = document.createElement('div');
         iconEl.className = 'win98-icon';
