@@ -1,0 +1,461 @@
+{
+  "categories": [
+    {
+      "id": "general_assembly",
+      "name": { "en": "The General Assembly", "tr": "Genel Kurul" },
+      "description": {
+        "en": "The main deliberative assembly of the United Nations.",
+        "tr": "Birleşmiş Milletlerin ana danışma organı."
+      },
+      "backgroundImage": "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80",
+      "subcommittees": [
+        {
+          "id": "disarmament",
+          "name": {
+            "en": "Disarmament and International Security Committee",
+            "tr": "Silahsızlandırma ve Uluslararası Güvenlik Komitesi"
+          },
+          "shortName": { "en": "DISEC", "tr": "DISEC" },
+          "description": {
+            "en": "The First Committee of the UN General Assembly deals with disarmament, global challenges and threats to peace that affect the international community.",
+            "tr": "BM Genel Kurulu'nun Birinci Komitesi, silahsızlandırma, küresel zorluklar ve uluslararası toplumu etkileyen barış tehditlerini ele alır."
+          },
+          "backgroundImage": "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80",
+          "committees": [
+            {
+              "id": "disarmament_main",
+              "name": {
+                "en": "Disarmament and International Security Committee",
+                "tr": "Silahsızlandırma ve Uluslararası Güvenlik Komitesi"
+              },
+              "backgroundImage": "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80",
+              "agendaItem": {
+                "en": "Addressing the proliferation of weapons of mass destruction in the context of emerging technologies",
+                "tr": "Gelişen teknolojiler bağlamında kitle imha silahlarının yayılmasını ele almak"
+              },
+              "boardMembers": [
+                {
+                  "name": "Elif Yılmaz",
+                  "role": { "en": "Chair", "tr": "Başkan" },
+                  "image": "https://i.pravatar.cc/150?img=1"
+                },
+                {
+                  "name": "Arda Kaya",
+                  "role": { "en": "Vice-Chair", "tr": "Başkan Yardımcısı" },
+                  "image": "https://i.pravatar.cc/150?img=2"
+                },
+                {
+                  "name": "Zeynep Demir",
+                  "role": { "en": "Rapporteur", "tr": "Raportör" },
+                  "image": "https://i.pravatar.cc/150?img=3"
+                }
+              ],
+              "overview": {
+                "en": "The Disarmament and International Security Committee (DISEC) is the First Committee of the UN General Assembly. All UN member states are members of the committee. It is one of six main committees of the General Assembly. The committee deals with disarmament and related international security questions. It has a special role in the UN system as the only forum at the global level for multilateral negotiations on disarmament and related security issues.",
+                "tr": "Silahsızlandırma ve Uluslararası Güvenlik Komitesi (DISEC), BM Genel Kurulu'nun Birinci Komitesi'dir. Tüm BM üyeleri komitenin üyesidir. Genel Kurul'un altı ana komitesinden biridir. Komite, silahsızlandırma ve ilgili uluslararası güvenlik konularını ele alır. Silahsızlandırma konularında küresel düzeyde çok taraflı müzakereler için tek forum olarak BM sisteminde özel bir rolü vardır."
+              },
+              "details": {
+                "en": "The committee works on a wide range of disarmament issues including nuclear weapons, chemical and biological weapons, conventional weapons, and emerging technologies with military applications. It prepares resolutions that are then adopted by the General Assembly. The committee also addresses issues related to transparency in armaments, confidence-building measures, and the prevention of an arms race in outer space.",
+                "tr": "Komite, nükleer silahlar, kimyasal ve biyolojik silahlar, konvansiyonel silahlar ve askeri uygulamalara sahip gelişen teknolojiler dahil olmak üzere çok çeşitli silahsızlandırma konuları üzerinde çalışır. Daha sonra Genel Kurul tarafından kabul edilen kararlar hazırlar. Komite ayrıca silahlarda şeffaflık, güven artırıcı tedbirler ve uzayda silahlanma yarışının önlenmesi ile ilgili konuları da ele almaktadır."
+              },
+              "studyGuideUrl": "https://www.un.org/en/ga/"
+            }
+          ]
+        },
+        {
+          "id": "human_rights",
+          "name": {
+            "en": "Human Rights Council",
+            "tr": "İnsan Hakları Konseyi"
+          },
+          "shortName": { "en": "UNHRC", "tr": "UNHRC" },
+          "description": {
+            "en": "The Human Rights Council is an inter-governmental body responsible for promoting and protecting human rights around the world.",
+            "tr": "İnsan Hakları Konseyi, dünya genelinde insan haklarını teşvik etmek ve korumaktan sorumlu hükümetler arası bir organdır."
+          },
+          "backgroundImage": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80",
+          "committees": [
+            {
+              "id": "human_rights_main",
+              "name": {
+                "en": "Human Rights Council",
+                "tr": "İnsan Hakları Konseyi"
+              },
+              "backgroundImage": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80",
+              "agendaItem": {
+                "en": "Protection of human rights in the digital age: balancing security and privacy",
+                "tr": "Dijital çağda insan haklarının korunması: güvenlik ve gizlilik dengesi"
+              },
+              "boardMembers": [
+                {
+                  "name": "Merve Özkan",
+                  "role": { "en": "Chair", "tr": "Başkan" },
+                  "image": "https://i.pravatar.cc/150?img=4"
+                },
+                {
+                  "name": "Burak Aydın",
+                  "role": { "en": "Vice-Chair", "tr": "Başkan Yardımcısı" },
+                  "image": "https://i.pravatar.cc/150?img=5"
+                },
+                {
+                  "name": "Sena Çelik",
+                  "role": { "en": "Rapporteur", "tr": "Raportör" },
+                  "image": "https://i.pravatar.cc/150?img=6"
+                }
+              ],
+              "overview": {
+                "en": "The Human Rights Council (UNHRC) is the principal UN intergovernmental body responsible for strengthening the promotion and protection of human rights around the globe. It was established in 2006 to replace the former United Nations Commission on Human Rights. The Council is made up of 47 Member States elected by the General Assembly. It is headquartered in Geneva, Switzerland.",
+                "tr": "İnsan Hakları Konseyi (UNHRC), dünya genelinde insan haklarının tanıtılmasını ve korunmasını güçlendirmekten sorumlu olan başlıca BM hükümetler arası organıdır. Eski BM İnsan Hakları Komisyonu'nun yerini almak üzere 2006 yılında kurulmuştur. Konsey, Genel Kurul tarafından seçilen 47 Üye Devletten oluşmaktadır. Merkezi İsviçre'nin Cenevre şehrindedir."
+              },
+              "details": {
+                "en": "The Council addresses human rights violations and makes recommendations on them. It also works on thematic human rights issues such as freedom of expression, the right to education, and the rights of vulnerable groups. The Universal Periodic Review (UPR) is a unique mechanism of the Council which involves a review of the human rights records of all UN Member States. The Council holds regular sessions three times a year.",
+                "tr": "Konsey, insan hakları ihlallerini ele alır ve bunlarla ilgili önerilerde bulunur. Ayrıca, ifade özgürlüğü, eğitim hakkı ve savunmasız grupların hakları gibi tematik insan hakları konularında çalışır. Evrensel Periyodik İnceleme (UPR), tüm BM Üye Devletlerinin insan hakları kayıtlarını incelemeyi içeren Konsey'e özgü bir mekanizmadır. Konsey yılda üç düzenli oturum gerçekleştirir."
+              },
+              "studyGuideUrl": "https://www.ohchr.org/en/hr-council"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "specialized_agencies",
+      "name": { "en": "Specialized Agencies", "tr": "Özel Ajanslar" },
+      "description": {
+        "en": "Autonomous organizations working with the United Nations through the coordinating machinery of the Economic and Social Council.",
+        "tr": "Ekonomik ve Sosyal Konseyin koordinasyon mekanizması aracılığıyla Birleşmiş Milletlerle çalışan bağımsız organizasyonlar."
+      },
+      "backgroundImage": "https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?w=800&q=80",
+      "subcommittees": [
+        {
+          "id": "brb",
+          "name": {
+            "en": "Brigade de Repression du Banditisme",
+            "tr": "Brigade de Répression du Banditisme"
+          },
+          "shortName": { "en": "BRB", "tr": "BRB" },
+          "description": {
+            "en": "The Brigade de Repression du Banditisme is a specialized French law enforcement unit tackling organized crime, armed robbery, and high-profile criminal networks operating across borders.",
+            "tr": "Brigade de Répression du Banditisme, örgütlü suç, silahlı soygun ve sınır ötesi çalışan yüksek profilli suç şebekeleri ile mücadele eden özel Fransız kolluk kuvveti birimidir."
+          },
+          "backgroundImage": "https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?w=800&q=80",
+          "committees": [
+            {
+              "id": "brb_main",
+              "name": {
+                "en": "Brigade de Repression du Banditisme",
+                "tr": "Brigade de Répression du Banditisme"
+              },
+              "backgroundImage": "https://images.unsplash.com/photo-1589578228447-e1a4e481c6c8?w=800&q=80",
+              "agendaItem": {
+                "en": "Combating transnational organized crime through international police cooperation and intelligence sharing",
+                "tr": "Uluslararası polis iş birliği ve istihbarat paylaşımı yoluyla sınır ötesi örgütlü suç ile mücadele"
+              },
+              "boardMembers": [
+                {
+                  "name": "Hugo Leclerc",
+                  "role": { "en": "Director", "tr": "Müdür" },
+                  "image": "https://i.pravatar.cc/150?img=7"
+                },
+                {
+                  "name": "Claire Dupont",
+                  "role": { "en": "Deputy Director", "tr": "Müdür Yardımcısı" },
+                  "image": "https://i.pravatar.cc/150?img=8"
+                },
+                {
+                  "name": "Jean Moreau",
+                  "role": {
+                    "en": "Chief Investigator",
+                    "tr": "Baş Soruşturmacı"
+                  },
+                  "image": "https://i.pravatar.cc/150?img=9"
+                }
+              ],
+              "overview": {
+                "en": "The Brigade de Repression du Banditisme (BRB) is an elite unit within the French National Police, established in 1933. It specializes in investigating and suppressing organized criminal groups involved in armed robbery, kidnapping, and sophisticated heists. The BRB works closely with Europol and Interpol to track criminal networks that operate across European borders.",
+                "tr": "Brigade de Répression du Banditisme (BRB), 1933 yılında kurulan Fransız Ulusal Polisi içindeki elit bir birimdir. Silahlı soygun, adam kaçırma ve karmaşık soygunlara karışan organize suç gruplarını soruşturmak ve bastırmak için uzmanlaşmıştır. BRB, Avrupa sınırlarında çalışan suç şebekelerini takip etmek için Europol ve Interpol ile yakın çalışmaktadır."
+              },
+              "details": {
+                "en": "The BRB operates under the Judicial Police Directorate of the Paris Police Prefecture. The brigade is divided into several sections, each handling different types of organized crime. Its agents are highly trained specialists in surveillance, interrogation, and tactical operations. The unit has been instrumental in solving some of France's most notorious criminal cases, including armed bank robberies and international jewel theft rings.",
+                "tr": "BRB, Paris Polis Prefektörlüğü Adli Polis Müdürlüğü bağlantısında çalışmaktadır. Tugay, farklı organize suç türlerini ele alan bölümlere ayrılmıştır. Ajanları gözetim, sorgu ve taktik operasyonlarda yüksek derecede eğitimli uzmanlardır. Birim, silahlı banka soygunları ve uluslararası mücevher hırsızlığı şebekeleri de dahil olmak üzere Fransa'nın en ünlü ceza davalarının çözülmesinde önemli rol oynamıştır."
+              },
+              "studyGuideUrl": "https://www.interpol.int/"
+            }
+          ]
+        },
+        {
+          "id": "hsc",
+          "name": {
+            "en": "Historical Security Council",
+            "tr": "Tarihsel Güvenlik Konseyi"
+          },
+          "shortName": { "en": "HSC", "tr": "TARİHSEL GK" },
+          "description": {
+            "en": "A simulation of the UN Security Council during a critical historical period, allowing delegates to explore the decisions and dilemmas faced by world leaders.",
+            "tr": "Kritik bir tarihsel dönemdeki BM Güvenlik Konseyi'nin simülasyonu; temsilcilerin dünya liderlerinin karşılaştığı kararları ve ikilemleri keşfetmesine olanak tanır."
+          },
+          "backgroundImage": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=800&q=80",
+          "committees": [
+            {
+              "id": "hsc_main",
+              "name": {
+                "en": "Historical Security Council",
+                "tr": "Tarihsel Güvenlik Konseyi"
+              },
+              "backgroundImage": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?w=800&q=80",
+              "agendaItem": {
+                "en": "The Cuban Missile Crisis of 1962: Preventing nuclear catastrophe through diplomacy",
+                "tr": "1962 Küba Füze Krizi: Diplomasi yoluyla nükleer felaketi önlemek"
+              },
+              "boardMembers": [
+                {
+                  "name": "Katherine Hartley",
+                  "role": { "en": "President", "tr": "Başkan" },
+                  "image": "https://i.pravatar.cc/150?img=10"
+                },
+                {
+                  "name": "Dimitri Volkov",
+                  "role": { "en": "Vice-President", "tr": "Başkan Yardımcısı" },
+                  "image": "https://i.pravatar.cc/150?img=11"
+                },
+                {
+                  "name": "James Monroe",
+                  "role": { "en": "Secretary", "tr": "Katip" },
+                  "image": "https://i.pravatar.cc/150?img=12"
+                }
+              ],
+              "overview": {
+                "en": "The Historical Security Council (HSC) recreates the UN Security Council during one of the most dangerous moments in human history: the Cuban Missile Crisis of October 1962. Delegates take on the roles of diplomats from that era, navigating the intense Cold War tensions between the United States and the Soviet Union. The council must address the placement of Soviet nuclear missiles in Cuba, just 90 miles from the US mainland.",
+                "tr": "Tarihsel Güvenlik Konseyi (HSC), insanlık tarihinin en tehlikeli anlarından birinde, Ekim 1962'deki Küba Füze Krizi sırasında BM Güvenlik Konseyi'ni yeniden oluşturuyor. Temsilciler o dönemin diplomat rollerini üstlenerek ABD ile Sovyetler Birliği arasındaki yoğun Soğuk Savaş gerilimlerinde yollarını bulmaya çalışır. Konsey, ABD anakarasına yalnızca 90 mil uzaklıktaki Küba'da Sovyet nükleer füzelerinin yerleştirilmesini ele almalı."
+              },
+              "details": {
+                "en": "During the 13-day crisis in October 1962, the world stood on the brink of nuclear war. US reconnaissance aircraft discovered Soviet missile sites under construction in Cuba. President John F. Kennedy imposed a naval blockade around the island, demanding the removal of the missiles. The HSC simulation places delegates at the center of these tense negotiations, where every decision could tip the balance between peace and catastrophic conflict. Delegates must balance national interests with the survival of humanity.",
+                "tr": "Ekim 1962'deki 13 günlük kriz sırasında dünya nükleer savaşın eşiğindeydi. ABD keşif uçakları, Küba'da inşa edilmekte olan Sovyet füze sahalarını keşfetti. Başkan John F. Kennedy, adanın etrafında bir deniz ablukası uyguladı ve füzelerin kaldırılmasını talep etti. HSC simülasyonu temsilcileri bu gerilimli müzakerelerin merkezine yerleştiriyor; burada her karar, barış ile felaket arasındaki dengeyi değiştirebilir. Temsilciler, ulusal çıkarları insanlığın hayatta kalması ile dengelemelidir."
+              },
+              "studyGuideUrl": "https://history.state.gov/milestones/1961-1968/cuban-missile-crisis"
+            }
+          ]
+        },
+        {
+          "id": "who",
+          "name": {
+            "en": "World Health Organization",
+            "tr": "Dünya Sağlık Örgütü"
+          },
+          "shortName": { "en": "WHO", "tr": "DSÖ" },
+          "description": {
+            "en": "The World Health Organization is a specialized agency of the United Nations responsible for international public health.",
+            "tr": "Dünya Sağlık Örgütü, uluslararası halk sağlığından sorumlu Birleşmiş Milletlerin uzmanlaştırılmış birimidir."
+          },
+          "backgroundImage": "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&q=80",
+          "committees": [
+            {
+              "id": "who_main",
+              "name": {
+                "en": "World Health Organization",
+                "tr": "Dünya Sağlık Örgütü"
+              },
+              "backgroundImage": "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=800&q=80",
+              "agendaItem": {
+                "en": "Global preparedness for future pandemics: strengthening healthcare systems and equitable vaccine distribution",
+                "tr": "Gelecek pandemilere karşı küresel hazırlık: sağlık sistemlerinin güçlendirilmesi ve adil aşı dağıtımı"
+              },
+              "boardMembers": [
+                {
+                  "name": "Dr. Amara Osei",
+                  "role": {
+                    "en": "Director-General",
+                    "tr": "Genel Müdür"
+                  },
+                  "image": "https://i.pravatar.cc/150?img=13"
+                },
+                {
+                  "name": "Dr. Lena Bergstrom",
+                  "role": {
+                    "en": "Deputy Director-General",
+                    "tr": "Genel Müdür Yardımcısı"
+                  },
+                  "image": "https://i.pravatar.cc/150?img=14"
+                },
+                {
+                  "name": "Dr. Rajesh Patel",
+                  "role": { "en": "Chief Scientist", "tr": "Baş Bilim İnsanı" },
+                  "image": "https://i.pravatar.cc/150?img=15"
+                }
+              ],
+              "overview": {
+                "en": "The World Health Organization (WHO) is a specialized agency of the United Nations established on April 7, 1948. Headquartered in Geneva, Switzerland, the WHO is responsible for international public health. It plays a leading role in health emergencies, setting health research agenda, establishing norms and standards, and providing technical support to member states. The organization monitors health trends and assesses global health challenges.",
+                "tr": "Dünya Sağlık Örgütü (DSÖ), 7 Nisan 1948'de kurulan Birleşmiş Milletlerin uzmanlaştırılmış birimidir. İsviçre'nin Cenevre şehrinde merkezi bulunan DSÖ, uluslararası halk sağlığından sorumludur. Sağlık acil durumlarında liderlik rolü oynar, sağlık araştırma gündemi belirler, normlar ve standartlar oluşturur ve üyelere teknik destek sağlar. Örgüt, sağlık trendlerini izler ve küresel sağlık zorluklarını değerlendirir."
+              },
+              "details": {
+                "en": "The WHO works on a broad range of health issues including disease prevention, health systems strengthening, emergency preparedness, and health equity. Key programs include the Expanded Programme on Immunization, the Global Malaria Programme, and the Essential Medicines and Health Products initiative. Following the COVID-19 pandemic, the WHO has been working on the Pandemic Treaty to improve global preparedness and response to future health emergencies.",
+                "tr": "DSÖ, hastalık önleme, sağlık sistemini güçlendirme, acil durum hazırlığı ve sağlık eşitliği dahil olmak üzere geniş bir sağlık konuları yelpazesi üzerinde çalışır. Önemli programlar arasında genişletilmiş aşı programı, küresel sıtma programı ve temel ilaçlar ile sağlık ürünleri girişimi yer alır. COVID-19 pandemisinden sonra DSÖ, gelecek sağlık acil durumlarına karşı küresel hazırlığı ve müdahaleyi iyileştirmek için Pandemi Antlaşması üzerinde çalışmaktadır."
+              },
+              "studyGuideUrl": "https://www.who.int/"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crisis_committees",
+      "name": { "en": "Crisis Committees", "tr": "Kriz Komiteleri" },
+      "description": {
+        "en": "Fast-paced, dynamic committees that simulate real-time crisis scenarios requiring immediate decision-making.",
+        "tr": "Anında karar almayı gerektiren gerçek zamanlı kriz senaryolarını simüle eden hızlı ve dinamik komiteler."
+      },
+      "backgroundImage": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
+      "subcommittees": [
+        {
+          "id": "cabinet_lcdp",
+          "name": { "en": "Cabinet: LCDP", "tr": "Kabine: LCDP" },
+          "shortName": { "en": "CABINET", "tr": "KABİNE" },
+          "description": {
+            "en": "A high-level cabinet simulation where delegates act as key government ministers navigating a political crisis with far-reaching consequences.",
+            "tr": "Temsilcilerin derin etkileri olan bir politik krizde önemli hükümet bakanları olarak yer aldığı üst düzey bir kabine simülasyonu."
+          },
+          "backgroundImage": "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80",
+          "committees": [
+            {
+              "id": "cabinet_lcdp_main",
+              "name": { "en": "Cabinet: LCDP", "tr": "Kabine: LCDP" },
+              "backgroundImage": "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80",
+              "agendaItem": {
+                "en": "National security crisis: managing a constitutional emergency while preserving democratic institutions",
+                "tr": "Ulusal güvenlik krizi: demokratik kurumları korurken anayasal bir acil durumu yönetmek"
+              },
+              "boardMembers": [
+                {
+                  "name": "Victoria Chen",
+                  "role": { "en": "Prime Minister", "tr": "Başbakan" },
+                  "image": "https://i.pravatar.cc/150?img=16"
+                },
+                {
+                  "name": "Marcus Webb",
+                  "role": {
+                    "en": "Deputy Prime Minister",
+                    "tr": "Başbakan Yardımcısı"
+                  },
+                  "image": "https://i.pravatar.cc/150?img=17"
+                },
+                {
+                  "name": "Aisha Rahman",
+                  "role": { "en": "Cabinet Secretary", "tr": "Kabine Katibi" },
+                  "image": "https://i.pravatar.cc/150?img=18"
+                }
+              ],
+              "overview": {
+                "en": "The Cabinet: LCDP simulation places delegates in the roles of senior government officials during a severe political crisis. Unlike traditional MUN committees, the Cabinet operates under extreme time pressure with constantly evolving situations. Delegates must make swift decisions on national security, economic policy, and public communications while maintaining coalition unity. Information is selectively released, and delegates must act on incomplete intelligence.",
+                "tr": "Kabine: LCDP simülasyonu, ciddi bir politik kriz sırasında temsilcileri üst düzey hükümet yetkilileri rollerine yerleştirir. Geleneksel BM komitelerinin aksine, Kabine sürekli değişen durumlar altında aşırı zaman baskısıyla çalışır. Temsilciler, ulusal güvenlik, ekonomi politikası ve kamuoyu iletişimi konularında hızlı kararlar alırken koalisyon birliğini korumalıdır. Bilgiler seçici olarak açıklanır ve temsilciler eksik istihbaratla hareket etmelidir."
+              },
+              "details": {
+                "en": "Crisis committees differ fundamentally from traditional MUN committees. There are no formal resolutions or voting procedures. Instead, directives, communiques, and immediate actions drive the committee. The crisis staff continuously introduces new developments, press leaks, and external events that force delegates to adapt their strategies. The Cabinet must balance competing interests of different ministries, respond to media inquiries, and manage both domestic and international fallout from their decisions.",
+                "tr": "Kriz komiteleri geleneksel BM komitelerinden kökten farklıdır. Resmi kararlar veya oylama prosedürleri yoktur. Bunun yerine direktifler, bildiriler ve anlık eylemler komiteyi sürdürür. Kriz personeli sürekli olarak yeni gelişmeler, basın sızıntıları ve dış olaylar sunar ve temsilcileri stratejilerini uyarlamaya zorlar. Kabine, farklı bakanlıkların birbiriyle çakışan çıkarlarını dengelemeli, medya taleplerine cevap vermeli ve kararlarının hem yurt içi hem de uluslararası yansımalarını yönetmelidir."
+              },
+              "studyGuideUrl": "https://www.un.org/en/about-us/"
+            }
+          ]
+        },
+        {
+          "id": "fcc_star_wars",
+          "name": { "en": "FCC: Star Wars", "tr": "FCC: Star Wars" },
+          "shortName": { "en": "FCC", "tr": "FCC" },
+          "description": {
+            "en": "A Future Crisis Committee set in the Star Wars universe, where delegates navigate galactic politics, territorial disputes, and interstellar diplomacy.",
+            "tr": "Star Wars evreninde geçen bir Gelecek Kriz Komitesi; temsilciler galaktik politika, bölgesel anlaşmazlıklar ve yıldızlar arası diplomasi içinde yollarını bulmaya çalışır."
+          },
+          "backgroundImage": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&q=80",
+          "committees": [
+            {
+              "id": "fcc_star_wars_main",
+              "name": { "en": "FCC: Star Wars", "tr": "FCC: Star Wars" },
+              "backgroundImage": "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=800&q=80",
+              "agendaItem": {
+                "en": "The fall of the Galactic Empire: establishing a new galactic government in the power vacuum",
+                "tr": "Galaktik İmparatorluğun çöküşü: güç boşluğunda yeni bir galaktik hükümet kurmak"
+              },
+              "boardMembers": [
+                {
+                  "name": "Anakin Starkiller",
+                  "role": { "en": "Chancellor", "tr": "Şansölye" },
+                  "image": "https://i.pravatar.cc/150?img=19"
+                },
+                {
+                  "name": "Leia Organa-Solo",
+                  "role": { "en": "Chief of State", "tr": "Devlet Başkanı" },
+                  "image": "https://i.pravatar.cc/150?img=20"
+                },
+                {
+                  "name": "Mon Mothma",
+                  "role": { "en": "Senate Speaker", "tr": "Senato Başkanı" },
+                  "image": "https://i.pravatar.cc/150?img=21"
+                }
+              ],
+              "overview": {
+                "en": "The FCC: Star Wars committee is set in the aftermath of the Galactic Empire's collapse. The death of Emperor Palpatine has created a massive power vacuum across the galaxy. Former rebel leaders, Imperial remnants, and independent systems are all vying for control. Delegates represent various factions and must negotiate the formation of a new galactic government while managing military threats, economic collapse, and the legacy of the Force.",
+                "tr": "FCC: Star Wars komitesi, Galaktik İmparatorluğun çöküşünün ardından geçen zamanda kurulmuştur. İmparator Palpatine'in ölümü galaksi genelinde devasa bir güç boşluğu yaratmıştır. Eski asi liderleri, İmparatorluk kalıntıları ve bağımsız sistemlerin hepsi kontrol için yarışmaktadır. Temsilciler çeşitli grupları temsil eder ve askeri tehditleri, ekonomik çöküşü ve Güç'ün mirasını yönetirken yeni bir galaktik hükümetin kurulması için müzakere etmelidir."
+              },
+              "details": {
+                "en": "This committee operates as a Future Crisis Committee (FCC), meaning it takes a fictional setting and applies realistic crisis dynamics. The Star Wars universe provides a rich backdrop of political intrigue, military conflict, and moral complexity. Delegates will face scenarios including fleet movements, planetary sieces, economic sanctions, and diplomatic back-channel negotiations. The Force itself becomes a political tool, with factions seeking to control Force-sensitive individuals and ancient Jedi/Sith artifacts.",
+                "tr": "Bu komite bir Gelecek Kriz Komitesi (FCC) olarak çalışır; yani kurgusal bir ortam alır ve gerçekçi kriz dinamikleri uygular. Star Wars evreni, politik entrika, askeri çatışma ve ahlaki karmaşıklık için zengin bir ortam sağlar. Temsilciler filo hareketleri, gezegen kuşatmaları, ekonomik yaptırımlar ve diplomatik arka kanal müzakereleri gibi senaryolarla karşılaşacak. Güç'ün kendisi politik bir araca dönüşür; gruplar Güç'e duyarlı kişileri ve antik Jedi/Sith eserlerini kontrol etmeye çalışır."
+              },
+              "studyGuideUrl": "https://starwars.fandom.com/wiki/Galactic_Empire"
+            }
+          ]
+        },
+        {
+          "id": "hcc_soviet_afghan",
+          "name": {
+            "en": "HCC: The Soviet-Afghan War",
+            "tr": "HCC: Sovyet-Afgan Savaşı"
+          },
+          "shortName": { "en": "HCC", "tr": "HCC" },
+          "description": {
+            "en": "A Historical Crisis Committee focused on the Soviet-Afghan War (1979-1989), one of the defining conflicts of the Cold War era.",
+            "tr": "Soğuk Savaş çağının belirleyici çatışmalarından biri olan Sovyet-Afgan Savaşı'na (1979-1989) odaklanan bir Tarihsel Kriz Komitesi."
+          },
+          "backgroundImage": "https://images.unsplash.com/photo-1504359497019-90126e9b2835?w=800&q=80",
+          "committees": [
+            {
+              "id": "hcc_soviet_afghan_main",
+              "name": {
+                "en": "HCC: The Soviet-Afghan War",
+                "tr": "HCC: Sovyet-Afgan Savaşı"
+              },
+              "backgroundImage": "https://images.unsplash.com/photo-1504359497019-90126e9b2835?w=800&q=80",
+              "agendaItem": {
+                "en": "December 1979: The Soviet invasion of Afghanistan - managing the Cold War's hottest proxy conflict",
+                "tr": "Aralık 1979: Sovyetlerin Afganistan'ı işgali - Soğuk Savaş'ın en sıcak vekil çatışmasını yönetmek"
+              },
+              "boardMembers": [
+                {
+                  "name": "Yuri Andropov",
+                  "role": { "en": "Soviet Chairman", "tr": "Sovyet Başkanı" },
+                  "image": "https://i.pravatar.cc/150?img=22"
+                },
+                {
+                  "name": "Babrak Karmal",
+                  "role": { "en": "Afghan President", "tr": "Afganistan Başkanı" },
+                  "image": "https://i.pravatar.cc/150?img=23"
+                },
+                {
+                  "name": "William Casey",
+                  "role": { "en": "CIA Director", "tr": "CIA Müdürü" },
+                  "image": "https://i.pravatar.cc/150?img=24"
+                }
+              ],
+              "overview": {
+                "en": "The Historical Crisis Committee: Soviet-Afghan War plunges delegates into the complex geopolitical landscape of December 1979. The Soviet Union has just invaded Afghanistan to support the communist government against Mujahideen rebels. The conflict draws in global superpowers, regional neighbors, and non-state actors. Delegates represent key historical figures and must navigate the intersection of Cold War rivalries, Islamic resistance, and superpower brinkmanship.",
+                "tr": "Tarihsel Kriz Komitesi: Sovyet-Afgan Savaşı, temsilcileri Aralık 1979'un karmaşık jeopolitik manzarasına daldırıyor. Sovyetler Birliği, Mücahit isyancıları karşısında komünist hükümeti desteklemek için Afganistan'ı işgal etmiştir. Çatışma küresel güçleri, bölgesel komşuları ve devlet dışı aktörleri çekmektedir. Temsilciler önemli tarihsel kişileri temsil eder ve Soğuk Savaş rakiplerinin, İslami direnişin ve süper güçlerin eşik politikasının kesiştiği noktada yollarını bulmalıdır."
+              },
+              "details": {
+                "en": "The Soviet-Afghan War lasted from 1979 to 1989 and became the defining proxy conflict of the Cold War. The Soviet 40th Army entered Afghanistan in December 1979, sparking a decade-long insurgency. The CIA's Operation Cyclone funneled billions of dollars in weapons and training to the Mujahideen through Pakistan's ISI. The war had devastating consequences for Afghanistan, contributed to the collapse of the Soviet Union, and ironically helped create conditions for the rise of al-Qaeda. This committee captures the final, critical moments before the invasion and the complex web of alliances and betrayals that followed.",
+                "tr": "Sovyet-Afgan Savaşı 1979 ile 1989 arasında sürdü ve Soğuk Savaş çağının belirleyici vekil çatışması haline geldi. Sovyet 40. Ordusu Aralık 1979'da Afganistan'ı işgal etti ve on yıllık bir ayaklanma başlattı. CIA'nın Operasyon Cyclone'u, Pakistan'ın ISI'si aracılığıyla Mücahitlere milyarlarca dolar silah ve eğitim sağladı. Savaş Afganistan için yıkıcı sonuçlar doğurdu, Sovyetler Birliği'nin çöküşüne katkı sağladı ve ironik olarak El-Kaide'nin yükselişi için koşulları oluşturdu. Bu komite, işgalden hemen önceki son kritik anları ve sonraki ittifakların ve ihanetlerin karmaşık ağını yakalamaktadır."
+              },
+              "studyGuideUrl": "https://www.britannica.com/event/Soviet-Afghan-War"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

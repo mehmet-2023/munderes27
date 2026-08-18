@@ -9,7 +9,8 @@ const WIN98_ICONS = {
     map: `<svg viewBox="0 0 32 32" style="width:14px;height:14px;flex-shrink:0;"><polygon points="4,8 12,4 20,8 28,4 28,24 20,28 12,24 4,28" fill="#fff" stroke="#000" stroke-width="1"/><polyline points="12,4 12,24" stroke="#000" stroke-width="1"/><polyline points="20,8 20,28" stroke="#000" stroke-width="1"/><circle cx="16" cy="12" r="3" fill="#f00" stroke="#000" stroke-width="1"/></svg>`,
     datalog: `<svg viewBox="0 0 32 32" style="width:14px;height:14px;flex-shrink:0;"><ellipse cx="16" cy="8" rx="10" ry="4" fill="#c0c0c0" stroke="#000" stroke-width="1"/><path d="M6,8 L6,16 A10,4 0 0,0 26,16 L26,8" fill="#c0c0c0" stroke="#000" stroke-width="1"/><path d="M6,16 L6,24 A10,4 0 0,0 26,24 L26,16" fill="#c0c0c0" stroke="#000" stroke-width="1"/></svg>`,
     image: `<svg viewBox="0 0 32 32" style="width:14px;height:14px;flex-shrink:0;"><rect x="2" y="6" width="28" height="20" fill="#fff" stroke="#000" stroke-width="1"/><circle cx="10" cy="12" r="3" fill="#ffd700"/><polygon points="2,26 12,16 20,24 24,20 30,26" fill="#008000" stroke="#000" stroke-width="1"/></svg>`,
-    browser: `<svg viewBox="0 0 32 32" style="width:14px;height:14px;flex-shrink:0;"><circle cx="16" cy="16" r="14" fill="#2a6fb0" stroke="#000" stroke-width="1"/><path d="M16,2 A14,14 0 0,0 16,30" fill="none" stroke="#bfe6ff" stroke-width="1"/><path d="M2,16 A14,14 0 0,0 30,16" fill="none" stroke="#bfe6ff" stroke-width="1"/><path d="M6,7 A14,14 0 0,1 26,7 M6,25 A14,14 0 0,0 26,25" fill="none" stroke="#bfe6ff" stroke-width="1"/><text x="16" y="21" font-family="sans-serif" font-weight="bold" font-size="15" fill="#fff" text-anchor="middle">e</text></svg>`
+    browser: `<svg viewBox="0 0 32 32" style="width:14px;height:14px;flex-shrink:0;"><circle cx="16" cy="16" r="14" fill="#2a6fb0" stroke="#000" stroke-width="1"/><path d="M16,2 A14,14 0 0,0 16,30" fill="none" stroke="#bfe6ff" stroke-width="1"/><path d="M2,16 A14,14 0 0,0 30,16" fill="none" stroke="#bfe6ff" stroke-width="1"/><path d="M6,7 A14,14 0 0,1 26,7 M6,25 A14,14 0 0,0 26,25" fill="none" stroke="#bfe6ff" stroke-width="1"/><text x="16" y="21" font-family="sans-serif" font-weight="bold" font-size="15" fill="#fff" text-anchor="middle">e</text></svg>`,
+    committees: `<svg viewBox="0 0 32 32" style="width:14px;height:14px;flex-shrink:0;"><rect x="2" y="4" width="28" height="24" fill="#c0c0c0" stroke="#000" stroke-width="1"/><rect x="2" y="4" width="28" height="5" fill="#000080"/><line x1="2" y1="9" x2="30" y2="9" stroke="#fff" stroke-width="0.5"/><circle cx="16" cy="17" r="3.5" fill="#000" stroke="#000" stroke-width="0.8"/><path d="M10,25 Q10,20 16,20 Q22,20 22,25" fill="#000" stroke="#000" stroke-width="0.8"/><circle cx="7.5" cy="18" r="2.5" fill="#000" stroke="#000" stroke-width="0.8"/><path d="M3,25 Q3,21 7.5,21 Q9.5,21 10.5,22" fill="#000" stroke="#000" stroke-width="0.8"/><circle cx="24.5" cy="18" r="2.5" fill="#000" stroke="#000" stroke-width="0.8"/><path d="M29,25 Q29,21 24.5,21 Q22.5,21 21.5,22" fill="#000" stroke="#000" stroke-width="0.8"/></svg>`
 };
 
 // ── Icon SVGs (large: desktop) ─────────────────────────────────────────────
@@ -23,7 +24,8 @@ const WIN98_DESKTOP_ICONS = {
     map: `<svg class="win98-icon-svg" viewBox="0 0 32 32"><polygon points="4,8 12,4 20,8 28,4 28,24 20,28 12,24 4,28" fill="#fff" stroke="#000" stroke-width="1"/><polyline points="12,4 12,24" stroke="#000" stroke-width="1"/><polyline points="20,8 20,28" stroke="#000" stroke-width="1"/><circle cx="16" cy="12" r="3" fill="#f00" stroke="#000" stroke-width="1"/></svg>`,
     datalog: `<svg class="win98-icon-svg" viewBox="0 0 32 32"><ellipse cx="16" cy="8" rx="10" ry="4" fill="#c0c0c0" stroke="#000" stroke-width="1"/><path d="M6,8 L6,16 A10,4 0 0,0 26,16 L26,8" fill="#c0c0c0" stroke="#000" stroke-width="1"/><path d="M6,16 L6,24 A10,4 0 0,0 26,24 L26,16" fill="#c0c0c0" stroke="#000" stroke-width="1"/></svg>`,
     image: `<svg class="win98-icon-svg" viewBox="0 0 32 32"><rect x="2" y="6" width="28" height="20" fill="#fff" stroke="#000" stroke-width="1"/><circle cx="10" cy="12" r="3" fill="#ffd700"/><polygon points="2,26 12,16 20,24 24,20 30,26" fill="#008000" stroke="#000" stroke-width="1"/></svg>`,
-    browser: `<svg class="win98-icon-svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="#2a6fb0" stroke="#000" stroke-width="1"/><path d="M16,2 A14,14 0 0,0 16,30" fill="none" stroke="#bfe6ff" stroke-width="1"/><path d="M2,16 A14,14 0 0,0 30,16" fill="none" stroke="#bfe6ff" stroke-width="1"/><path d="M6,7 A14,14 0 0,1 26,7 M6,25 A14,14 0 0,0 26,25" fill="none" stroke="#bfe6ff" stroke-width="1"/><text x="16" y="21" font-family="sans-serif" font-weight="bold" font-size="15" fill="#fff" text-anchor="middle">e</text></svg>`
+    browser: `<svg class="win98-icon-svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="#2a6fb0" stroke="#000" stroke-width="1"/><path d="M16,2 A14,14 0 0,0 16,30" fill="none" stroke="#bfe6ff" stroke-width="1"/><path d="M2,16 A14,14 0 0,0 30,16" fill="none" stroke="#bfe6ff" stroke-width="1"/><path d="M6,7 A14,14 0 0,1 26,7 M6,25 A14,14 0 0,0 26,25" fill="none" stroke="#bfe6ff" stroke-width="1"/><text x="16" y="21" font-family="sans-serif" font-weight="bold" font-size="15" fill="#fff" text-anchor="middle">e</text></svg>`,
+    committees: `<svg class="win98-icon-svg" viewBox="0 0 32 32"><rect x="2" y="4" width="28" height="24" fill="#c0c0c0" stroke="#000" stroke-width="1"/><rect x="2" y="4" width="28" height="5" fill="#000080"/><line x1="2" y1="9" x2="30" y2="9" stroke="#fff" stroke-width="0.5"/><circle cx="16" cy="17" r="3.5" fill="#000" stroke="#000" stroke-width="0.8"/><path d="M10,25 Q10,20 16,20 Q22,20 22,25" fill="#000" stroke="#000" stroke-width="0.8"/><circle cx="7.5" cy="18" r="2.5" fill="#000" stroke="#000" stroke-width="0.8"/><path d="M3,25 Q3,21 7.5,21 Q9.5,21 10.5,22" fill="#000" stroke="#000" stroke-width="0.8"/><circle cx="24.5" cy="18" r="2.5" fill="#000" stroke="#000" stroke-width="0.8"/><path d="M29,25 Q29,21 24.5,21 Q22.5,21 21.5,22" fill="#000" stroke="#000" stroke-width="0.8"/></svg>`
 };
 
 // ── Shared Win98 menu system (every menu item is functional) ───────────────
@@ -201,7 +203,21 @@ const I18N = {
         'Open Application': 'Başvuruyu Aç',
         'Loading images...': 'Görseller yükleniyor...',
         'No images found in ': 'Şu klasörde görsel bulunamadı: ',
-        'This folder is empty.': 'Bu klasör boş.'
+        'This folder is empty.': 'Bu klasör boş.',
+        'Committees': 'Komiteler',
+        'Committees - Subcommittees': 'Komiteler - Alt Komiteler',
+        'All Committees': 'Tüm Komiteler',
+        'Overview': 'Genel Bakış',
+        'Details': 'Detaylar',
+        'Board Members': 'Kurul Üyeleri',
+        'Study Guide': 'Çalışma Kılavuzu',
+        'Explore': 'Keşfet',
+        'Agenda Item': 'Gündem Maddesi',
+        'About Committees': 'Komiteler Hakkında',
+        'Loading committees...': 'Komiteler yükleniyor...',
+        'Error loading committees data.': 'Komite verisi yüklenemedi.',
+        'No committee data found.': 'Komite verisi bulunamadı.',
+        'Back to Committees': 'Komitelere Dön'
     }
 };
 
@@ -590,7 +606,8 @@ const DESKTOP_APPS = [
     { id: 'recycle_bin',   name: 'Recycle bin', nameTr: 'Geri Dönüşüm Kutusu', type: 'folder', children: [], icon: WIN98_ICONS.recycleBin, desktopIcon: WIN98_DESKTOP_ICONS.recycleBin },
     { id: 'help',          name: 'Help-FAQs', nameTr: 'Yardım-SSS', type: 'help', src: 'help.json', icon: WIN98_ICONS.help,       desktopIcon: WIN98_DESKTOP_ICONS.help },
     { id: 'settings',      name: 'Settings', nameTr: 'Denetim Masası', type: 'settings', icon: WIN98_ICONS.settings,   desktopIcon: WIN98_DESKTOP_ICONS.settings },
-    { id: 'apply',         name: 'Apply', nameTr: 'Başvur', type: 'apply', src: 'applications.json', icon: WIN98_ICONS.apply,      desktopIcon: WIN98_DESKTOP_ICONS.apply }
+    { id: 'apply',         name: 'Apply', nameTr: 'Başvur', type: 'apply', src: 'applications.json', icon: WIN98_ICONS.apply,      desktopIcon: WIN98_DESKTOP_ICONS.apply },
+    { id: 'committees',    name: 'Committees', nameTr: 'Komiteler', type: 'committees', src: 'committees.json', icon: WIN98_ICONS.committees, desktopIcon: WIN98_DESKTOP_ICONS.committees }
 ];
 
 // ── Grid snap constants ────────────────────────────────────────────────────
@@ -1033,14 +1050,23 @@ function openAppWindow(app) {
         settings: { w: 540, h: 440 },
         map:      { w: 540, h: 380 },
         apply:    { w: 620, h: 400 },
-        browser:  { w: 640, h: 430 }
+        browser:  { w: 640, h: 430 },
+        committees: { w: 780, h: 500 },
+        committee_detail: { w: 700, h: 520 }
     };
     const size = sizeByType[app.type];
 
     if (isMobileLayout) {
         winEl.style.left = '5vw';
         winEl.style.top  = '5vh';
-        // width and height are handled by mobile CSS
+        if (app.type === 'committee_detail') {
+            winEl.style.width  = '90vw';
+            winEl.style.height = '85vh';
+        } else if (app.type === 'committees') {
+            winEl.style.width  = '90vw';
+            winEl.style.height = '80vh';
+        }
+        // other types: width and height handled by mobile CSS
     } else if (size) {
         const offsetX = 40 + (Object.keys(openWindows).length * 20) % 200;
         const offsetY = 40 + (Object.keys(openWindows).length * 20) % 150;
@@ -1395,6 +1421,12 @@ function renderAppContent(app, container) {
             break;
         case 'browser':
             renderBrowser(app, container);
+            break;
+        case 'committees':
+            renderCommittees(app, container);
+            break;
+        case 'committee_detail':
+            renderCommitteeDetail(app, container);
             break;
         default:
             container.style.padding = '5px';
@@ -2777,6 +2809,453 @@ function renderBrowser(app, container) {
 
     updateMenuBar();
     navigate(homeUrl, false);
+}
+
+// ── Committees (Win98 Explorer-style committee browser) ─────────────────────
+function renderCommittees(app, container) {
+    container.style.cssText = 'display:flex; flex-direction:column; background:#c0c0c0; color:#000; font-family:"MS Sans Serif",Tahoma,Verdana,sans-serif; font-size:12px; padding:0; overflow:hidden;';
+
+    const btnStyle = 'background:#c0c0c0; border:2px solid #fff; border-right-color:#000; border-bottom-color:#000; cursor:pointer; font-weight:bold; font-size:11px; font-family:inherit; line-height:1; padding:2px 8px;';
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const treeW = isMobile ? '110px' : '180px';
+
+    container.innerHTML = `
+        <div style="flex:1; display:flex; flex-direction:column; min-height:0; background:#c0c0c0;">
+            <div id="comm-menubar-${app.id}"></div>
+            <div style="display:flex; align-items:center; gap:4px; padding:4px 6px; background:#c0c0c0; border-bottom:1px solid #808080; flex-shrink:0;">
+                <button id="comm-back-${app.id}" title="${t('Back')}" disabled style="${btnStyle}">&lt;</button>
+                <button id="comm-fwd-${app.id}" title="${t('Forward')}" disabled style="${btnStyle}">&gt;</button>
+                <button id="comm-up-${app.id}" title="${t('Up one level')}" style="${btnStyle}">&#9650;</button>
+                <span style="font-size:11px; margin-left:8px; ${isMobile ? 'display:none;' : ''}">${t('Address')}</span>
+                <input id="comm-addr-${app.id}" type="text" spellcheck="false" readonly style="flex:1; min-width:60px; font-size:11px; font-family:inherit; border:1px solid #000; box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #fff; padding:2px 4px; background:#fff; outline:none;" />
+            </div>
+            <div style="flex:1; display:flex; min-height:0;">
+                ${isMobile ? '' : `<div id="comm-tree-${app.id}" style="width:${treeW}; flex-shrink:0; background:#fff; border:1px solid #000; box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #fff; margin:6px; overflow:auto; padding:2px;"></div>`}
+                <div id="comm-content-${app.id}" style="flex:1; background:#fff; border:1px solid #000; box-shadow: inset 1px 1px 0 #808080, inset -1px -1px 0 #fff; margin:6px; overflow:auto; display:flex; flex-wrap:wrap; align-content:flex-start; gap:10px; padding:${isMobile ? '8px' : '12px'};"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between; padding:2px 8px; background:#c0c0c0; border-top:1px solid #808080; box-shadow: inset 0 1px 0 #fff; flex-shrink:0; font-size:11px;">
+                <span id="comm-status-${app.id}"></span>
+                <span id="comm-statuspath-${app.id}"></span>
+            </div>
+        </div>
+    `;
+
+    const menuBarEl = container.querySelector(`#comm-menubar-${app.id}`);
+    const treeEl = container.querySelector(`#comm-tree-${app.id}`);
+    const contentEl = container.querySelector(`#comm-content-${app.id}`);
+    const addrEl = container.querySelector(`#comm-addr-${app.id}`);
+    const statusEl = container.querySelector(`#comm-status-${app.id}`);
+    const statusPathEl = container.querySelector(`#comm-statuspath-${app.id}`);
+    const backBtn = container.querySelector(`#comm-back-${app.id}`);
+    const fwdBtn = container.querySelector(`#comm-fwd-${app.id}`);
+    const upBtn = container.querySelector(`#comm-up-${app.id}`);
+
+    let categories = [];
+    let selectedNodeId = null;
+    let selectedType = null;
+    let selectedCatName = '';
+    let selectedSubName = '';
+    let navHistory = [];
+    let histPos = -1;
+
+    function pushHistory() {
+        navHistory = navHistory.slice(0, histPos + 1);
+        navHistory.push({ id: selectedNodeId, type: selectedType, catName: selectedCatName, subName: selectedSubName });
+        histPos = navHistory.length - 1;
+    }
+
+    function updateNavButtons() {
+        backBtn.disabled = histPos <= 0;
+        fwdBtn.disabled = histPos >= navHistory.length - 1;
+    }
+
+    function restoreFromHistory() {
+        const h = navHistory[histPos];
+        selectedNodeId = h.id; selectedType = h.type; selectedCatName = h.catName; selectedSubName = h.subName;
+        renderTree(); renderContent(); updateAddr(); updateStatus(); updateNavButtons();
+    }
+
+    function goBack() { if (histPos > 0) { histPos--; restoreFromHistory(); } }
+    function goForward() { if (histPos < navHistory.length - 1) { histPos++; restoreFromHistory(); } }
+
+    function buildTreeData() {
+        const tree = [{ id: '__root__', label: t('Committees'), type: 'root', children: [] }];
+        categories.forEach(cat => {
+            const catNode = { id: cat.id, label: langText(cat.name), type: 'category', data: cat, children: [] };
+            (cat.subcommittees || []).forEach(sub => {
+                catNode.children.push({ id: sub.id, label: langText(sub.shortName) || langText(sub.name), type: 'subcommittee', data: sub });
+            });
+            tree[0].children.push(catNode);
+        });
+        return tree;
+    }
+
+    function renderTree() {
+        if (!treeEl) return;
+        treeEl.innerHTML = '';
+        function renderNode(node, depth) {
+            const row = document.createElement('div');
+            row.style.cssText = `display:flex; align-items:center; gap:3px; padding:1px 4px; cursor:pointer; font-size:11px; white-space:nowrap; padding-left:${4 + depth * 14}px;`;
+            if (selectedNodeId === node.id) { row.style.background = '#000080'; row.style.color = '#fff'; }
+            const icon = node.type === 'root' ? WIN98_ICONS.committees : node.type === 'category' ? WIN98_ICONS.folder : WIN98_ICONS.committees;
+            const arrow = (node.children && node.children.length) ? '<span style="font-size:8px; width:10px; flex-shrink:0;">&#9660;</span>' : '<span style="width:10px; flex-shrink:0;"></span>';
+            row.innerHTML = `${arrow}<span style="flex-shrink:0;">${icon}</span><span style="overflow:hidden; text-overflow:ellipsis;">${escapeHtml(node.label)}</span>`;
+            row.addEventListener('click', () => { selectNode(node.id, node.type, node.data); });
+            treeEl.appendChild(row);
+            if (node.children) node.children.forEach(c => renderNode(c, depth + 1));
+        }
+        buildTreeData().forEach(n => renderNode(n, 0));
+    }
+
+    function selectNode(id, type, data) {
+        selectedNodeId = id;
+        selectedType = type;
+        if (type === 'category' && data) selectedCatName = langText(data.name);
+        if (type === 'subcommittee' && data) selectedSubName = langText(data.name);
+        pushHistory();
+        renderTree();
+        renderContent();
+        updateAddr();
+        updateStatus();
+        updateNavButtons();
+    }
+
+    function updateAddr() {
+        if (selectedType === 'root' || !selectedType) addrEl.value = 'Desktop\\' + t('Committees');
+        else if (selectedType === 'category') addrEl.value = 'Desktop\\' + t('Committees') + '\\' + selectedCatName;
+        else if (selectedType === 'subcommittee') addrEl.value = 'Desktop\\' + t('Committees') + '\\' + selectedCatName + '\\' + selectedSubName;
+    }
+
+    function updateStatus() {
+        const cells = contentEl.querySelectorAll('.comm-card');
+        statusEl.textContent = `${cells.length} ${t('objects')}`;
+    }
+
+    function renderContent() {
+        contentEl.innerHTML = '';
+        if (selectedType === 'root' || !selectedType) {
+            renderCategoryCards();
+        } else if (selectedType === 'category') {
+            const cat = categories.find(c => c.id === selectedNodeId);
+            if (cat) renderSubcommitteeCards(cat);
+        } else if (selectedType === 'subcommittee') {
+            const cat = categories.find(c => (c.subcommittees || []).some(s => s.id === selectedNodeId));
+            const sub = cat ? (cat.subcommittees || []).find(s => s.id === selectedNodeId) : null;
+            if (sub) renderCommitteeCards(sub);
+        }
+    }
+
+    function renderCategoryCards() {
+        categories.forEach(cat => {
+            const card = document.createElement('div');
+            card.className = 'comm-card';
+            card.style.cssText = 'width:100%; box-sizing:border-box; background:#fff; border:2px solid #fff; border-right-color:#000; border-bottom-color:#000; cursor:pointer; overflow:hidden; flex-shrink:0;';
+            const bgImg = cat.backgroundImage || '';
+            card.innerHTML = `
+                <div style="height:120px; background:url('${escapeHtml(bgImg)}') center/cover no-repeat; position:relative;">
+                    <div style="position:absolute; inset:0; background:linear-gradient(transparent 40%, rgba(0,0,0,0.7));"></div>
+                    <div style="position:absolute; bottom:0; left:0; right:0; padding:8px 10px; color:#fff; font-weight:bold; font-size:13px; text-shadow:1px 1px 2px #000;">${escapeHtml(langText(cat.name))}</div>
+                </div>
+                <div style="padding:6px 10px; font-size:11px; color:#000;">${escapeHtml(langText(cat.description))}</div>
+            `;
+            card.addEventListener('click', () => selectNode(cat.id, 'category', cat));
+            contentEl.appendChild(card);
+        });
+    }
+
+    function renderSubcommitteeCards(cat) {
+        (cat.subcommittees || []).forEach(sub => {
+            const card = document.createElement('div');
+            card.className = 'comm-card';
+            card.style.cssText = 'width:100%; box-sizing:border-box; background:#fff; border:2px solid #fff; border-right-color:#000; border-bottom-color:#000; cursor:pointer; overflow:hidden; flex-shrink:0;';
+            card.innerHTML = `
+                <div style="padding:8px 10px;">
+                    <div style="font-weight:bold; font-size:12px; color:#000080; margin-bottom:4px;">${escapeHtml(langText(sub.name))}</div>
+                    <div style="font-size:11px; color:#333; margin-bottom:6px;">${escapeHtml(langText(sub.description))}</div>
+                    <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                        <button class="comm-explore-btn" style="${btnStyle} font-size:10px;">${t('Explore')}</button>
+                        ${sub.committees && sub.committees[0] && sub.committees[0].studyGuideUrl ? `<a href="${escapeHtml(sub.committees[0].studyGuideUrl)}" target="_blank" rel="noopener" onclick="event.stopPropagation();" style="${btnStyle} font-size:10px; text-decoration:none; color:#000;">${t('Study Guide')}</a>` : ''}
+                    </div>
+                </div>
+            `;
+            card.querySelector('.comm-explore-btn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                openCommitteeDetail(sub);
+            });
+            card.addEventListener('click', () => selectNode(sub.id, 'subcommittee', sub));
+            contentEl.appendChild(card);
+        });
+    }
+
+    function renderCommitteeCards(sub) {
+        (sub.committees || []).forEach(committee => {
+            const card = document.createElement('div');
+            card.className = 'comm-card';
+            card.style.cssText = 'width:100%; box-sizing:border-box; background:#fff; border:2px solid #fff; border-right-color:#000; border-bottom-color:#000; cursor:pointer; overflow:hidden; flex-shrink:0;';
+            const bgImg = committee.backgroundImage || '';
+            const members = (committee.boardMembers || []).slice(0, 3);
+            card.innerHTML = `
+                <div style="height:140px; background:url('${escapeHtml(bgImg)}') center/cover no-repeat; position:relative;">
+                    <div style="position:absolute; inset:0; background:linear-gradient(transparent 30%, rgba(0,0,0,0.75));"></div>
+                    <div style="position:absolute; bottom:0; left:0; right:0; padding:8px 10px; color:#fff; font-weight:bold; font-size:13px; text-shadow:1px 1px 2px #000;">${escapeHtml(langText(committee.name))}</div>
+                </div>
+                <div style="padding:8px 10px;">
+                    <div style="font-size:10px; color:#808080; text-transform:uppercase; margin-bottom:2px;">${t('Agenda Item')}</div>
+                    <div style="font-size:11px; color:#333; margin-bottom:8px;">${escapeHtml(langText(committee.agendaItem))}</div>
+                    ${members.length ? `
+                    <div style="font-size:10px; color:#808080; text-transform:uppercase; margin-bottom:4px;">${t('Board Members')}</div>
+                    <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                        ${members.map(m => `
+                            <div style="display:flex; align-items:center; gap:4px;">
+                                <img src="${escapeHtml(m.image)}" style="width:22px; height:22px; border-radius:50%; border:1px solid #808080; object-fit:cover;" onerror="this.style.display='none'" />
+                                <span style="font-size:10px; color:#000;">${escapeHtml(m.name)}</span>
+                            </div>
+                        `).join('')}
+                    </div>` : ''}
+                    <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap;">
+                        <button class="comm-explore-btn" style="background:#c0c0c0; border:2px solid #fff; border-right-color:#000; border-bottom-color:#000; cursor:pointer; font-weight:bold; font-size:11px; font-family:inherit; line-height:1; padding:3px 14px;">${t('Explore')}</button>
+                        ${committee.studyGuideUrl ? `<a href="${escapeHtml(committee.studyGuideUrl)}" target="_blank" rel="noopener" onclick="event.stopPropagation();" style="background:#c0c0c0; border:2px solid #fff; border-right-color:#000; border-bottom-color:#000; cursor:pointer; font-weight:bold; font-size:11px; font-family:inherit; line-height:1; padding:3px 14px; text-decoration:none; color:#000;">${t('Study Guide')}</a>` : ''}
+                    </div>
+                </div>
+            `;
+            card.querySelector('.comm-explore-btn').addEventListener('click', (e) => {
+                e.stopPropagation();
+                openCommitteeDetail(sub, committee);
+            });
+            card.addEventListener('click', () => openCommitteeDetail(sub, committee));
+            contentEl.appendChild(card);
+        });
+    }
+
+    function openCommitteeDetail(sub, committee) {
+        const comm = committee || (sub.committees && sub.committees[0]);
+        if (!comm) return;
+        openAppWindow({
+            id: 'committee_detail_' + comm.id,
+            name: langText(comm.name),
+            nameTr: langText(comm.name),
+            type: 'committee_detail',
+            icon: WIN98_ICONS.committees,
+            committee: comm,
+            subcommittee: sub
+        });
+    }
+
+    function updateMenuBar() {
+        menuBarEl.innerHTML = '';
+        menuBarEl.appendChild(makeMenuBar([
+            {
+                label: 'File', items: [
+                    { label: 'New Window', action: () => openItem(app) },
+                    { separator: true },
+                    { label: 'Close', shortcut: 'Alt+F4', action: () => closeWindow(app.id) },
+                    { label: 'Exit', action: () => closeWindow(app.id) }
+                ]
+            },
+            {
+                label: 'View', items: [
+                    { label: 'Refresh', shortcut: 'F5', action: load }
+                ]
+            },
+            {
+                label: 'Help', items: [
+                    { label: 'Help Topics', action: () => openItem(findAppById('help')) },
+                    { separator: true },
+                    { label: 'About Committees', action: () => showAbout(t('About Committees')) }
+                ]
+            }
+        ]));
+    }
+
+    function load() {
+        contentEl.innerHTML = `<span style="color:#808080; font-size:12px;">${t('Loading committees...')}</span>`;
+        fetch(app.src)
+            .then(r => r.json())
+            .then(d => {
+                categories = (d && d.categories) || [];
+                navHistory = []; histPos = -1;
+                selectedNodeId = '__root__';
+                selectedType = 'root';
+                pushHistory();
+                render();
+            })
+            .catch(() => {
+                categories = [];
+                contentEl.innerHTML = `<span style="color:#808080; font-size:12px;">${t('Error loading committees data.')}</span>`;
+                statusEl.textContent = t('Error loading committees data.');
+                if (SOUND.error) SOUND.error();
+            });
+    }
+
+    function render() {
+        addrEl.value = 'Desktop\\' + t('Committees');
+        statusPathEl.textContent = addrEl.value;
+        renderTree();
+        renderContent();
+        updateMenuBar();
+        updateStatus();
+        updateNavButtons();
+    }
+
+    backBtn.addEventListener('click', goBack);
+    fwdBtn.addEventListener('click', goForward);
+
+    upBtn.addEventListener('click', () => {
+        if (selectedType === 'subcommittee') {
+            const cat = categories.find(c => (c.subcommittees || []).some(s => s.id === selectedNodeId));
+            if (cat) selectNode(cat.id, 'category', cat);
+        } else if (selectedType === 'category') {
+            selectNode('__root__', 'root', null);
+        }
+    });
+
+    container.addEventListener('keydown', (e) => {
+        if (e.key === 'F5') { load(); e.preventDefault(); }
+        if (e.altKey && e.key === 'ArrowLeft') { goBack(); e.preventDefault(); }
+        if (e.altKey && e.key === 'ArrowRight') { goForward(); e.preventDefault(); }
+    });
+
+    container.tabIndex = -1;
+    container.addEventListener('click', () => container.focus());
+
+    load();
+}
+
+// ── Committee Detail (individual committee page) ────────────────────────────
+function renderCommitteeDetail(app, container) {
+    container.style.cssText = 'display:flex; flex-direction:column; background:#fff; color:#000; font-family:"MS Sans Serif",Tahoma,Verdana,sans-serif; font-size:12px; padding:0; overflow:hidden;';
+
+    const committee = app.committee;
+    const subcommittee = app.subcommittee;
+    if (!committee) {
+        container.innerHTML = `<p style="margin:10px;">${t('No committee data found.')}</p>`;
+        return;
+    }
+
+    const members = committee.boardMembers || [];
+    const bgImg = committee.backgroundImage || '';
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    const heroH = isMobile ? '100px' : '160px';
+
+    container.innerHTML = `
+        <div style="flex:1; display:flex; flex-direction:column; min-height:0;">
+            <div id="cdt-menubar-${app.id}" style="flex-shrink:0;"></div>
+            <div style="display:flex; align-items:center; gap:4px; padding:3px 6px; background:#c0c0c0; border-bottom:1px solid #808080; flex-shrink:0;">
+                <button id="cdt-back-${app.id}" style="background:#c0c0c0; border:2px solid #fff; border-right-color:#000; border-bottom-color:#000; cursor:pointer; font-weight:bold; font-size:11px; font-family:inherit; line-height:1; padding:2px 8px;">&lt;</button>
+                <span style="font-size:11px; color:#808080;">${escapeHtml(langText(committee.name))}</span>
+            </div>
+            <div style="height:${heroH}; background:url('${escapeHtml(bgImg)}') center/cover no-repeat; position:relative; flex-shrink:0;">
+                <div style="position:absolute; inset:0; background:linear-gradient(transparent 30%, rgba(0,0,0,0.8));"></div>
+                <div style="position:absolute; bottom:0; left:0; right:0; padding:12px 16px; color:#fff;">
+                    <div style="font-size:${isMobile ? '14px' : '16px'}; font-weight:bold; text-shadow:1px 1px 3px #000;">${escapeHtml(langText(committee.name))}</div>
+                    ${subcommittee ? `<div style="font-size:11px; opacity:0.85; margin-top:2px;">${escapeHtml(langText(subcommittee.name))}</div>` : ''}
+                </div>
+            </div>
+            <div style="display:flex; flex-direction:${isMobile ? 'column' : 'row'}; gap:0; flex:1; min-height:0;">
+                <div id="cdt-main-${app.id}" style="flex:1; padding:${isMobile ? '10px 12px' : '12px 16px'}; ${isMobile ? '' : 'overflow:auto;'}"></div>
+                <div id="cdt-sidebar-${app.id}" style="${isMobile ? 'width:100%; border-left:none; border-top:1px solid #c0c0c0;' : 'width:200px; border-left:1px solid #c0c0c0;'} flex-shrink:0; background:#f0f0f0; padding:10px; overflow:auto;"></div>
+            </div>
+        </div>
+    `;
+
+    const menuBarEl = container.querySelector(`#cdt-menubar-${app.id}`);
+    const mainEl = container.querySelector(`#cdt-main-${app.id}`);
+    const sidebarEl = container.querySelector(`#cdt-sidebar-${app.id}`);
+    const backBtn = container.querySelector(`#cdt-back-${app.id}`);
+
+    backBtn.addEventListener('click', () => closeWindow(app.id));
+
+    let activeTab = 'overview';
+
+    function renderMenuBar() {
+        menuBarEl.innerHTML = '';
+        menuBarEl.appendChild(makeMenuBar([
+            {
+                label: 'File', items: [
+                    { label: 'Close', shortcut: 'Alt+F4', action: () => closeWindow(app.id) },
+                    { label: 'Exit', action: () => closeWindow(app.id) }
+                ]
+            },
+            {
+                label: 'Help', items: [
+                    { label: 'Help Topics', action: () => openItem(findAppById('help')) },
+                    { separator: true },
+                    { label: 'About Committees', action: () => showAbout(t('About Committees')) }
+                ]
+            }
+        ]));
+    }
+
+    function renderTabs() {
+        mainEl.innerHTML = '';
+        const tabBar = document.createElement('div');
+        tabBar.style.cssText = 'display:flex; gap:2px; margin-bottom:10px;';
+        ['overview', 'details'].forEach(tab => {
+            const btn = document.createElement('button');
+            btn.textContent = tab === 'overview' ? t('Overview') : t('Details');
+            btn.style.cssText = `background:${activeTab === tab ? '#fff' : '#c0c0c0'}; border:2px solid #fff; border-right-color:${activeTab === tab ? '#000' : '#808080'}; border-bottom-color:${activeTab === tab ? '#000' : '#808080'}; cursor:pointer; font-size:11px; font-family:inherit; padding:3px 14px; font-weight:${activeTab === tab ? 'bold' : 'normal'};`;
+            btn.addEventListener('click', () => { activeTab = tab; renderTabs(); });
+            tabBar.appendChild(btn);
+        });
+        mainEl.appendChild(tabBar);
+
+        const content = document.createElement('div');
+        content.style.cssText = 'font-size:12px; line-height:1.6; color:#000;';
+        const text = activeTab === 'overview' ? committee.overview : committee.details;
+        content.innerHTML = escapeHtml(langText(text)).replace(/\n/g, '<br>');
+        mainEl.appendChild(content);
+    }
+
+    function renderSidebar() {
+        sidebarEl.innerHTML = '';
+        if (members.length) {
+            const heading = document.createElement('div');
+            heading.style.cssText = 'font-weight:bold; font-size:11px; color:#000080; margin-bottom:8px; text-transform:uppercase;';
+            heading.textContent = t('Board Members');
+            sidebarEl.appendChild(heading);
+            members.forEach(m => {
+                const row = document.createElement('div');
+                row.style.cssText = 'display:flex; align-items:center; gap:6px; margin-bottom:8px; padding:4px; background:#fff; border:1px solid #c0c0c0;';
+                row.innerHTML = `
+                    <img src="${escapeHtml(m.image)}" style="width:32px; height:32px; border-radius:50%; border:1px solid #808080; object-fit:cover; flex-shrink:0;" onerror="this.style.display='none'" />
+                    <div style="min-width:0;">
+                        <div style="font-size:11px; font-weight:bold; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${escapeHtml(m.name)}</div>
+                        <div style="font-size:10px; color:#808080;">${escapeHtml(langText(m.role))}</div>
+                    </div>
+                `;
+                sidebarEl.appendChild(row);
+            });
+        }
+
+        if (committee.agendaItem) {
+            const agendaHeading = document.createElement('div');
+            agendaHeading.style.cssText = 'font-weight:bold; font-size:11px; color:#000080; margin-top:12px; margin-bottom:4px; text-transform:uppercase;';
+            agendaHeading.textContent = t('Agenda Item');
+            sidebarEl.appendChild(agendaHeading);
+            const agendaText = document.createElement('div');
+            agendaText.style.cssText = 'font-size:11px; color:#333; line-height:1.4;';
+            agendaText.textContent = langText(committee.agendaItem);
+            sidebarEl.appendChild(agendaText);
+        }
+
+        if (committee.studyGuideUrl) {
+            const guideHeading = document.createElement('div');
+            guideHeading.style.cssText = 'font-weight:bold; font-size:11px; color:#000080; margin-top:12px; margin-bottom:4px; text-transform:uppercase;';
+            guideHeading.textContent = t('Study Guide');
+            sidebarEl.appendChild(guideHeading);
+            const link = document.createElement('a');
+            link.href = committee.studyGuideUrl;
+            link.target = '_blank';
+            link.rel = 'noopener';
+            link.style.cssText = 'font-size:11px; color:#0000ff; text-decoration:underline; word-break:break-all;';
+            link.textContent = committee.studyGuideUrl;
+            sidebarEl.appendChild(link);
+        }
+    }
+
+    renderMenuBar();
+    renderTabs();
+    renderSidebar();
 }
 
 
