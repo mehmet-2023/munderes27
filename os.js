@@ -3138,7 +3138,7 @@ function renderCommitteeDetail(app, container) {
     const heroH = isMobile ? '100px' : '160px';
 
     container.innerHTML = `
-        <div style="flex:1; display:flex; flex-direction:column; min-height:0;">
+        <div style="flex:1; display:flex; flex-direction:column; min-height:0; overflow-y:auto;">
             <div id="cdt-menubar-${app.id}" style="flex-shrink:0;"></div>
             <div style="display:flex; align-items:center; gap:4px; padding:3px 6px; background:#c0c0c0; border-bottom:1px solid #808080; flex-shrink:0;">
                 <button id="cdt-back-${app.id}" style="background:#c0c0c0; border:2px solid #fff; border-right-color:#000; border-bottom-color:#000; cursor:pointer; font-weight:bold; font-size:11px; font-family:inherit; line-height:1; padding:2px 8px;">&lt;</button>
