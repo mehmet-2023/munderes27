@@ -887,7 +887,7 @@ let isDesktopEventsBound = false;
 
     if (!isDesktopEventsBound) {
         document.getElementById('win98-desktop').addEventListener('click', (e) => {
-            if (!e.target.closest('.win98-icon')) {
+            if (!e.target.closest('.win98-icon') && !window.__wasDragging) {
                 document.querySelectorAll('.win98-icon').forEach(el => el.classList.remove('selected'));
             }
             toggleStartMenu(false);
@@ -896,6 +896,7 @@ let isDesktopEventsBound = false;
         setupTaskbar();
         updateClock();
         setInterval(updateClock, 1000);
+
         isDesktopEventsBound = true;
     }
 }
@@ -1061,7 +1062,7 @@ function openAppWindow(app) {
         winEl.style.top  = '5vh';
         if (app.type === 'committee_detail') {
             winEl.style.width  = '90vw';
-            winEl.style.height = '85vh';
+            winEl.style.height = '80vh';
         } else if (app.type === 'committees') {
             winEl.style.width  = '90vw';
             winEl.style.height = '80vh';
@@ -1311,6 +1312,103 @@ window.addEventListener('DOMContentLoaded', () => {
     SOUND.load();
     initDesktop();
     applyLanguage();
+
+    // ── Translucent selection rectangle ──
+    {
+        const desktop = document.getElementById('win98-desktop');
+        const iconsContainer = document.getElementById('desktop-icons-container');
+        const selBox = document.createElement('div');
+        selBox.style.cssText = 'position:absolute; border:1px dashed #000080; background:rgba(0,0,180,0.18); display:none; z-index:999999; pointer-events:none;';
+        iconsContainer.appendChild(selBox);
+        let dragging = false, startX = 0, startY = 0;
+
+        function toContainerCoords(clientX, clientY) {
+            const cr = iconsContainer.getBoundingClientRect();
+            return { x: clientX - cr.left, y: clientY - cr.top };
+        }
+
+        function updateSelBox(cx, cy) {
+            const x = Math.min(cx, startX);
+            const y = Math.min(cy, startY);
+            const w = Math.abs(cx - startX);
+            const h = Math.abs(cy - startY);
+            if (w > 3 || h > 3) window.__wasDragging = true;
+            selBox.style.left = x + 'px';
+            selBox.style.top = y + 'px';
+            selBox.style.width = w + 'px';
+            selBox.style.height = h + 'px';
+            const selRect = { left: x, top: y, right: x + w, bottom: y + h };
+            const cr = iconsContainer.getBoundingClientRect();
+            document.querySelectorAll('#desktop-icons-container .win98-icon').forEach(icon => {
+                const r = icon.getBoundingClientRect();
+                const rLeft = r.left - cr.left;
+                const rTop = r.top - cr.top;
+                const rRight = rLeft + r.width;
+                const rBottom = rTop + r.height;
+                const hit = !(rRight < selRect.left || rLeft > selRect.right || rBottom < selRect.top || rTop > selRect.bottom);
+                icon.classList.toggle('selected', hit);
+            });
+        }
+
+        function startDrag(clientX, clientY) {
+            dragging = true;
+            window.__wasDragging = false;
+            const c = toContainerCoords(clientX, clientY);
+            startX = c.x;
+            startY = c.y;
+            selBox.style.left = startX + 'px';
+            selBox.style.top = startY + 'px';
+            selBox.style.width = '0';
+            selBox.style.height = '0';
+            selBox.style.display = 'block';
+            document.querySelectorAll('.win98-icon').forEach(el => el.classList.remove('selected'));
+        }
+
+        function endDrag() {
+            if (dragging) {
+                dragging = false;
+                selBox.style.display = 'none';
+                setTimeout(() => { window.__wasDragging = false; }, 50);
+            }
+        }
+
+        // Mouse events
+        desktop.addEventListener('mousedown', (e) => {
+            if (e.button !== 0) return;
+            if (e.target.closest('.win98-window, .win98-start-menu, .win98-taskbar, .win98-icon')) return;
+            startDrag(e.clientX, e.clientY);
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!dragging) return;
+            const c = toContainerCoords(e.clientX, e.clientY);
+            updateSelBox(c.x, c.y);
+        });
+
+        document.addEventListener('mouseup', endDrag);
+
+        // Touch events
+        desktop.addEventListener('touchstart', (e) => {
+            if (e.target.closest('.win98-window, .win98-start-menu, .win98-taskbar, .win98-icon')) return;
+            if (e.touches.length !== 1) return;
+            const touch = e.touches[0];
+            startDrag(touch.clientX, touch.clientY);
+            e.preventDefault();
+        }, { passive: false });
+
+        document.addEventListener('touchmove', (e) => {
+            if (!dragging) return;
+            if (e.touches.length !== 1) { endDrag(); return; }
+            const touch = e.touches[0];
+            const c = toContainerCoords(touch.clientX, touch.clientY);
+            updateSelBox(c.x, c.y);
+            e.preventDefault();
+        }, { passive: false });
+
+        document.addEventListener('touchend', endDrag);
+        document.addEventListener('touchcancel', endDrag);
+    }
 
     const loginScreen = document.getElementById('win98-login-screen');
     const desktop = document.getElementById('win98-desktop');
