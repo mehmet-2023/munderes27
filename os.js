@@ -838,15 +838,26 @@ function initDesktop() {
             e.stopPropagation();
             document.querySelectorAll('.win98-icon').forEach(el => el.classList.remove('selected'));
             iconEl.classList.add('selected');
-            if (isTouchDevice) {
-                if (iconEl._lastTap && Date.now() - iconEl._lastTap < 300) {
-                    openItem(app);
-                }
-                iconEl._lastTap = Date.now();
-            }
         });
 
-        if (!isTouchDevice) {
+        if (isTouchDevice) {
+            let touchStartTime = 0;
+            let touchMoved = false;
+            iconEl.addEventListener('touchstart', (e) => {
+                if (e.touches.length !== 1) return;
+                touchStartTime = Date.now();
+                touchMoved = false;
+            }, { passive: true });
+            iconEl.addEventListener('touchmove', () => { touchMoved = true; }, { passive: true });
+            iconEl.addEventListener('touchend', (e) => {
+                if (touchMoved) return;
+                if (Date.now() - touchStartTime > 300) return;
+                e.preventDefault();
+                document.querySelectorAll('.win98-icon').forEach(el => el.classList.remove('selected'));
+                iconEl.classList.add('selected');
+                openItem(app);
+            });
+        } else {
             iconEl.addEventListener('dblclick', (e) => {
                 e.stopPropagation();
                 openItem(app);
