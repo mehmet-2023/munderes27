@@ -1,3 +1,6 @@
+// ── Touch / mobile detection ────────────────────────────────────────────────
+const isTouchDevice = window.matchMedia('(max-width: 768px), (pointer: coarse)').matches;
+
 // ── Icon SVGs (small: titlebar / taskbar) ──────────────────────────────────
 const WIN98_ICONS = {
     folder: `<svg viewBox="0 0 32 32" style="width:14px;height:14px;flex-shrink:0;"><path d="M2,6 L12,6 L15,9 L30,9 L30,26 L2,26 Z" fill="#ffd700" stroke="#000" stroke-width="1"/><path d="M2,9 L30,9" stroke="#fff" stroke-width="1"/><path d="M4,11 L28,11 L28,24 L4,24 Z" fill="#ffe680"/></svg>`,
@@ -835,12 +838,20 @@ function initDesktop() {
             e.stopPropagation();
             document.querySelectorAll('.win98-icon').forEach(el => el.classList.remove('selected'));
             iconEl.classList.add('selected');
+            if (isTouchDevice) {
+                if (iconEl._lastTap && Date.now() - iconEl._lastTap < 300) {
+                    openItem(app);
+                }
+                iconEl._lastTap = Date.now();
+            }
         });
 
-        iconEl.addEventListener('dblclick', (e) => {
-            e.stopPropagation();
-            openItem(app);
-        });
+        if (!isTouchDevice) {
+            iconEl.addEventListener('dblclick', (e) => {
+                e.stopPropagation();
+                openItem(app);
+            });
+        }
 
         makeIconDraggable(iconEl, app);
         container.appendChild(iconEl);
@@ -1650,7 +1661,13 @@ function renderExplorer(app, container) {
         let lastTap = 0;
         cell.addEventListener('touchend', (e) => {
             const t = Date.now();
-            if (t - lastTap < 500 && t - lastTap > 0) { onOpen(item); e.preventDefault(); }
+            if (isTouchDevice) {
+                onOpen(item);
+                e.preventDefault();
+            } else if (t - lastTap < 500 && t - lastTap > 0) {
+                onOpen(item);
+                e.preventDefault();
+            }
             lastTap = t;
         });
         cell.addEventListener('click', (e) => {
@@ -2621,7 +2638,11 @@ function renderApplications(app, container) {
             if (i === selectedIndex) { row.style.background = '#000080'; row.style.color = '#fff'; }
             row.innerHTML = `<span style="flex-shrink:0;">${WIN98_ICONS.browser}</span><span style="overflow:hidden; text-overflow:ellipsis;">${escapeHtml(langText(item.name))}</span>`;
             row.addEventListener('click', () => select(i));
-            row.addEventListener('dblclick', () => openItem(browserAppFor(item)));
+            if (isTouchDevice) {
+                row.addEventListener('click', () => openItem(browserAppFor(item)));
+            } else {
+                row.addEventListener('dblclick', () => openItem(browserAppFor(item)));
+            }
             treeEl.appendChild(row);
         });
     }
@@ -2659,7 +2680,11 @@ function renderApplications(app, container) {
                 cell.title = langText(item.description);
                 cell.innerHTML = `${desktopIconFor({ icon: WIN98_ICONS.browser })}<div class="win98-icon-label">${escapeHtml(langText(item.name))}</div>`;
             }
-            cell.addEventListener('dblclick', () => openItem(bapp));
+            if (isTouchDevice) {
+                cell.addEventListener('click', () => openItem(bapp));
+            } else {
+                cell.addEventListener('dblclick', () => openItem(bapp));
+            }
             cell.addEventListener('click', () => select(i));
             contentEl.appendChild(cell);
         });
@@ -3518,7 +3543,11 @@ function renderSettings(app, container) {
             cell.style.cssText = 'display:flex; flex-direction:column; align-items:center; width:92px; padding:8px 4px; cursor:pointer; box-sizing:border-box;';
             cell.innerHTML = a.icon + '<span style="font-size:11px; text-align:center; line-height:1.2; margin-top:4px; color:#000;">' + escapeHtml(appletLabel(a)) + '</span>';
             cell.addEventListener('click', () => { selectApplet(a, cell); SOUND.click(); });
-            cell.addEventListener('dblclick', () => { SOUND.open(); renderApplet(a); });
+            if (isTouchDevice) {
+                cell.addEventListener('click', () => { SOUND.open(); renderApplet(a); });
+            } else {
+                cell.addEventListener('dblclick', () => { SOUND.open(); renderApplet(a); });
+            }
             grid.appendChild(cell);
         });
 
